@@ -314,7 +314,7 @@ const Services = () => {
                 
                 <ul className="service-features">
                   {service.features.map((feature, idx) => (
-                    <li key={idx}>✓ {feature}</li>
+                    <li key={idx}>{feature}</li>
                   ))}
                 </ul>
                 
