@@ -4,7 +4,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field, EmailStr
 from typing import List, Optional
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import os
