@@ -31,25 +31,33 @@ body {
   cursor: none;
 }
 
-body::before {
-  content: '';
+.cursor {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #1e53f9, #3afaff);
+  width: 8px;
+  height: 8px;
+  background: #3afaff;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  animation: cursor-pulse 2s infinite;
-  mix-blend-mode: difference;
+  transition: none;
 }
 
-@keyframes cursor-pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.2); }
+.cursor-follower {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(58, 250, 255, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.cursor-follower.active {
+  transform: translate(-50%, -50%) scale(1.5);
+  border-color: rgba(30, 83, 249, 0.6);
 }
 
 /* Navigation */
