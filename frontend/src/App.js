@@ -816,6 +816,7 @@ const Home = () => {
 function App() {
   return (
     <div className="App">
+      <CustomCursor />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
