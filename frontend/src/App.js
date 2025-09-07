@@ -5,6 +5,75 @@ import './App.css';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
+// Custom Cursor Component
+const CustomCursor = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [followerPosition, setFollowerPosition] = useState({ x: 0, y: 0 });
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    let animationFrameId;
+    
+    const updateMousePosition = (e) => {
+      setPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    const updateFollowerPosition = () => {
+      setFollowerPosition(prev => ({
+        x: prev.x + (position.x - prev.x) * 0.1,
+        y: prev.y + (position.y - prev.y) * 0.1
+      }));
+      animationFrameId = requestAnimationFrame(updateFollowerPosition);
+    };
+
+    const handleMouseEnter = () => setIsActive(true);
+    const handleMouseLeave = () => setIsActive(false);
+
+    // Add event listeners
+    window.addEventListener('mousemove', updateMousePosition);
+    
+    // Add hover effects for clickable elements
+    const clickableElements = document.querySelectorAll('a, button, .btn-primary, .btn-secondary, .service-btn, .nav-link');
+    clickableElements.forEach(el => {
+      el.addEventListener('mouseenter', handleMouseEnter);
+      el.addEventListener('mouseleave', handleMouseLeave);
+    });
+
+    // Start follower animation
+    updateFollowerPosition();
+
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
+      clickableElements.forEach(el => {
+        el.removeEventListener('mouseenter', handleMouseEnter);
+        el.removeEventListener('mouseleave', handleMouseLeave);
+      });
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [position.x, position.y]);
+
+  return (
+    <>
+      <div 
+        className="cursor"
+        style={{
+          left: `${position.x}px`,
+          top: `${position.y}px`
+        }}
+      />
+      <div 
+        className={`cursor-follower ${isActive ? 'active' : ''}`}
+        style={{
+          left: `${followerPosition.x}px`,
+          top: `${followerPosition.y}px`
+        }}
+      />
+    </>
+  );
+};
+
 // Components
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
