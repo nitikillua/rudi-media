@@ -34,8 +34,8 @@ const CustomCursor = () => {
 
     const updateFollowerPosition = () => {
       setFollowerPosition(prev => ({
-        x: prev.x + (position.x - prev.x) * 0.25,
-        y: prev.y + (position.y - prev.y) * 0.25
+        x: prev.x + (position.x - prev.x) * 0.8,
+        y: prev.y + (position.y - prev.y) * 0.8
       }));
       animationFrameId = requestAnimationFrame(updateFollowerPosition);
     };
