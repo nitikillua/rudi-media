@@ -78,23 +78,34 @@ const CustomCursor = () => {
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const handleMenuClick = (e) => {
+    // Close menu when clicking on a link in mobile view
+    if (window.innerWidth <= 768) {
+      closeMenu();
+    }
+  };
+
   return (
     <nav className="navigation">
       <div className="nav-container">
         <Link to="/" className="logo">
           <img 
-            src="https://customer-assets.emergentagent.com/job_87b36088-4f8b-4f3a-a10a-49faeb5d7cca/artifacts/q4wne5vk_das%20logo.svg" 
+            src="https://customer-assets.emergentagent.com/job_87b36088-4f8b-4f3a-a10a-49faeb5d7cca/artifacts/17d24le9_ohne%20hintergrund%20das%20gute%20Kopie.png" 
             alt="Rudi-Media Logo" 
             className="logo-img"
           />
         </Link>
         
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <a href="#home" className="nav-link">Home</a>
-          <a href="#services" className="nav-link">Leistungen</a>
-          <a href="#about" className="nav-link">Über uns</a>
-          <Link to="/blog" className="nav-link">Blog</Link>
-          <a href="#contact" className="nav-link">Kontakt</a>
+          <a href="#home" className="nav-link" onClick={handleMenuClick}>Home</a>
+          <a href="#services" className="nav-link" onClick={handleMenuClick}>Leistungen</a>
+          <a href="#about" className="nav-link" onClick={handleMenuClick}>Über uns</a>
+          <Link to="/blog" className="nav-link" onClick={handleMenuClick}>Blog</Link>
+          <a href="#contact" className="nav-link" onClick={handleMenuClick}>Kontakt</a>
         </div>
         
         <button 
