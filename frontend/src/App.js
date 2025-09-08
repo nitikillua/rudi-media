@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import './App.css';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
