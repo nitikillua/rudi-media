@@ -225,7 +225,7 @@ const WhyChooseUs = () => {
             <div className="team-text">
               <h3>Expertise, die sich auszahlt</h3>
               <p>
-                Mit jahrelanger Erfahrung im digitalen Marketing und hunderten erfolgreichen 
+                Mit jahrelanger Erfahrung im digitalen Marketing und etlichen erfolgreichen 
                 Projekten wissen wir genau, was funktioniert. Unser Fokus liegt auf messbaren 
                 Ergebnissen und nachhaltigem Wachstum für Ihr Unternehmen.
               </p>
