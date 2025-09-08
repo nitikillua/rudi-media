@@ -563,14 +563,30 @@ const Services = () => {
   return (
     <section id="services" className="services">
       <div className="container">
-        <div className="section-header">
+        <motion.div 
+          className="section-header"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
           <h2>Unsere Leistungen</h2>
           <p>Ganzheitliche Digital Marketing Lösungen für Ihren Erfolg</p>
-        </div>
+        </motion.div>
         
-        <div className="services-grid">
+        <motion.div 
+          className="services-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={stagger}
+        >
           {services.map((service, index) => (
-            <div key={index} className="service-card" data-aos="fade-up" data-aos-delay={index * 200}>
+            <motion.div 
+              key={index} 
+              className="service-card" 
+              variants={fadeInUp}
+            >
               <div className="service-image">
                 <img src={service.image} alt={service.title} />
                 <div className="service-overlay">
@@ -592,9 +608,9 @@ const Services = () => {
                   Mehr erfahren
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
