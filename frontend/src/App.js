@@ -365,16 +365,21 @@ const Hero = () => {
       />
       <div className="hero-overlay" />
       <div className="hero-content">
-        <div className="hero-text">
-          <h1 className="hero-title">
+        <motion.div 
+          className="hero-text"
+          initial="hidden"
+          animate="visible"
+          variants={stagger}
+        >
+          <motion.h1 className="hero-title" variants={fadeInUp}>
             Ihr digitaler Erfolg beginnt hier
             <span className="gradient-text">mit Rudi-Media</span>
-          </h1>
-          <p className="hero-subtitle">
+          </motion.h1>
+          <motion.p className="hero-subtitle" variants={fadeInUp}>
             Professionelles Digital Marketing für mehr Sichtbarkeit, Kunden und Umsatz. 
             Von Social Media bis Google Ads – wir bringen Ihr Unternehmen online nach vorne.
-          </p>
-          <div className="hero-buttons">
+          </motion.p>
+          <motion.div className="hero-buttons" variants={fadeInUp}>
             <a href="#contact" className="btn-primary">
               Kostenlose Beratung
             </a>
@@ -386,15 +391,20 @@ const Hero = () => {
             >
               WhatsApp Chat
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-      <div className="hero-scroll">
+      <motion.div 
+        className="hero-scroll"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.6 }}
+      >
         <div className="scroll-indicator">
           <span>Scroll</span>
           <div className="scroll-line"></div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
