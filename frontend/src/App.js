@@ -671,13 +671,25 @@ const ContactForm = () => {
   return (
     <section id="contact" className="contact">
       <div className="container">
-        <div className="section-header">
+        <motion.div 
+          className="section-header"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
           <h2>Kontakt aufnehmen</h2>
           <p>Bereit für Ihren digitalen Durchbruch? Lassen Sie uns sprechen!</p>
-        </div>
+        </motion.div>
         
-        <div className="contact-content">
-          <div className="contact-info">
+        <motion.div 
+          className="contact-content"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={stagger}
+        >
+          <motion.div className="contact-info" variants={fadeInUp}>
             <div className="contact-item">
               <div className="contact-icon">📍</div>
               <div>
@@ -713,9 +725,9 @@ const ContactForm = () => {
                 Jetzt auf WhatsApp kontaktieren
               </a>
             </div>
-          </div>
+          </motion.div>
           
-          <form className="contact-form" onSubmit={handleSubmit}>
+          <motion.form className="contact-form" onSubmit={handleSubmit} variants={fadeInUp}>
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="name">Name *</label>
@@ -791,8 +803,8 @@ const ContactForm = () => {
                 {submitStatus.message}
               </div>
             )}
-          </form>
-        </div>
+          </motion.form>
+        </motion.div>
       </div>
     </section>
   );
