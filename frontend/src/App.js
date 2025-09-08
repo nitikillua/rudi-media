@@ -499,11 +499,11 @@ const WhyChooseUs = () => {
             variants={stagger}
           >
             <motion.div className="trust-item" variants={fadeInUp}>
-              <h4><CounterAnimation target={50} />+</h4>
+              <h4><CounterAnimation target={50} /></h4>
               <p>Erfolgreiche Projekte</p>
             </motion.div>
             <motion.div className="trust-item" variants={fadeInUp}>
-              <h4><CounterAnimation target={5} />+</h4>
+              <h4><CounterAnimation target={5} /></h4>
               <p>Jahre Erfahrung</p>
             </motion.div>
             <motion.div className="trust-item" variants={fadeInUp}>
