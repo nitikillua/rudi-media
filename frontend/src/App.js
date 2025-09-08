@@ -121,11 +121,11 @@ const Navigation = () => {
         </Link>
         
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <a href="#home" className="nav-link" onClick={handleMenuClick}>Home</a>
-          <a href="#services" className="nav-link" onClick={handleMenuClick}>Leistungen</a>
-          <a href="#about" className="nav-link" onClick={handleMenuClick}>Über uns</a>
+          <Link to="/" className="nav-link" onClick={handleMenuClick}>Home</Link>
+          <a href="/#services" className="nav-link" onClick={handleMenuClick}>Leistungen</a>
+          <a href="/#about" className="nav-link" onClick={handleMenuClick}>Über uns</a>
           <Link to="/blog" className="nav-link" onClick={handleMenuClick}>Blog</Link>
-          <a href="#contact" className="nav-link" onClick={handleMenuClick}>Kontakt</a>
+          <a href="/#contact" className="nav-link" onClick={handleMenuClick}>Kontakt</a>
         </div>
         
         <button 
