@@ -27,6 +27,16 @@ body {
 }
 
 /* Custom cursor */
+@media (max-width: 768px) {
+  body {
+    cursor: auto !important;
+  }
+  
+  .cursor,
+  .cursor-follower {
+    display: none !important;
+  }
+}
 body {
   cursor: none;
 }
