@@ -513,9 +513,8 @@ const Services = () => {
       description: "Professionelle Betreuung Ihrer Social Media Kanäle mit maßgeschneiderten Inhalten, die Ihre Zielgruppe begeistern und zu Kunden machen.",
       features: [
         "Content-Erstellung & Design",
-        "Community Management",
-        "Instagram & Facebook Ads",
-        "Influencer Marketing",
+        "vor Ort: Video & Fotaufnahmen",
+        "virale Reels",
         "Analytics & Reporting"
       ],
       image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwxfHxzb2NpYWwlMjBtZWRpYSUyMG1hcmtldGluZ3xlbnwwfHx8fDE3NTcyODczMTV8MA&ixlib=rb-4.1.0&q=85",
