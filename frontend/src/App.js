@@ -561,7 +561,7 @@ const Footer = () => {
             <h4>Kontakt</h4>
             <p>Kampenwandstr. 2<br />85586 Poing</p>
             <p>Tel: +49 1522 2539425</p>
-            <p>info@rudimedia.de</p>
+            <p>info@rudi-media.de</p>
           </div>
           
           <div className="footer-section">
