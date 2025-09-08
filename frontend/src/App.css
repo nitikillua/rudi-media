@@ -1140,6 +1140,14 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .navigation {
+    padding: 15px 0;
+  }
+  
+  .logo-img {
+    height: 50px;
+  }
+  
   .nav-menu {
     position: fixed;
     top: 0;
@@ -1151,6 +1159,7 @@ body {
     flex-direction: column;
     justify-content: center;
     transition: left 0.3s ease;
+    z-index: 1000;
   }
 
   .nav-menu.active {
@@ -1160,6 +1169,10 @@ body {
   .nav-toggle {
     display: flex;
     z-index: 1001;
+  }
+
+  .hero {
+    padding-top: 80px; /* Add padding to prevent title overlap */
   }
 
   .hero-buttons {
