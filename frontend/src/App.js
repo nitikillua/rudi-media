@@ -443,7 +443,7 @@ const ContactForm = () => {
               <div className="contact-icon">✉️</div>
               <div>
                 <h4>E-Mail</h4>
-                <p>info@rudimedia.de</p>
+                <p>info@rudi-media.de</p>
               </div>
             </div>
             
