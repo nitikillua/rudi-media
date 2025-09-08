@@ -394,17 +394,6 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </div>
-      <motion.div 
-        className="hero-scroll"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-      >
-        <div className="scroll-indicator">
-          <span>Scroll</span>
-          <div className="scroll-line"></div>
-        </div>
-      </motion.div>
     </section>
   );
 };
