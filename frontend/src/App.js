@@ -34,7 +34,7 @@ const CounterAnimation = ({ target, duration = 2 }) => {
 
   return (
     <span ref={ref}>
-      {count}{target >= 100 ? '' : '+'}
+      {count}{target < 100 ? '+' : ''}
     </span>
   );
 };
