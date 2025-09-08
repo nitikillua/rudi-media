@@ -992,6 +992,7 @@ function App() {
   return (
     <div className="App">
       <CustomCursor />
+      <CookieBanner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
