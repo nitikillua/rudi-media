@@ -102,7 +102,7 @@ class EmailService:
             
             company_message = Mail(
                 from_email=self.sender_email,
-                to_emails="info@rudimedia.de",
+                to_emails="info@rudi-media.de",
                 subject=company_subject,
                 html_content=company_content
             )
