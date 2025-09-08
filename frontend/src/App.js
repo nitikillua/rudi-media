@@ -6,7 +6,63 @@ import './App.css';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-// Cookie Banner Component
+// Counter Animation Component
+const CounterAnimation = ({ target, duration = 2 }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef();
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (isInView) {
+      let startTime;
+      const animate = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+        
+        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.floor(easeOutCubic * target));
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          setCount(target);
+        }
+      };
+      requestAnimationFrame(animate);
+    }
+  }, [isInView, target, duration]);
+
+  return (
+    <span ref={ref}>
+      {count}{target >= 100 ? '' : '+'}
+    </span>
+  );
+};
+
+// Animation variants
+const fadeInUp = {
+  hidden: { 
+    opacity: 0, 
+    y: 60,
+    transition: { duration: 0.6 }
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { 
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
+const stagger = {
+  visible: {
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
 const CookieBanner = () => {
   const [showBanner, setShowBanner] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
