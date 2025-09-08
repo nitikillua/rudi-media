@@ -191,12 +191,12 @@ const WhyChooseUs = () => {
       description: "Transparente Reporting-Systeme zeigen Ihnen genau, wie sich Ihr Investment in Marketing auszahlt."
     },
     {
-      icon: "🚀",
-      title: "Innovative Technologien",
-      description: "Wir nutzen die neuesten Tools und Technologien für maximale Effizienz in Ihren Kampagnen."
+      icon: "🤝",
+      title: "Marketing aus einer Hand",
+      description: "SEO-Agentur, Social-Media-Agentur etc. in Einem. Ein Ansprechpartner für alle Ihre Marketing-Bedürfnisse."
     },
     {
-      icon: "🤝",
+      icon: "👥",
       title: "Persönliche Betreuung",
       description: "Direkter Kontakt zu Ihrem Marketing-Experten – keine Warteschleifen, keine Anonymität."
     }
