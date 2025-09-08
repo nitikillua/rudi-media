@@ -436,53 +436,81 @@ const WhyChooseUs = () => {
   return (
     <section className="why-choose-us">
       <div className="container">
-        <div className="section-header">
+        <motion.div 
+          className="section-header"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
           <h2>Warum Rudi-Media?</h2>
           <p>Ihr Partner für nachhaltigen digitalen Erfolg</p>
-        </div>
+        </motion.div>
         
-        <div className="features-grid">
+        <motion.div 
+          className="features-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={stagger}
+        >
           {features.map((feature, index) => (
-            <div key={index} className="feature-card" data-aos="fade-up" data-aos-delay={index * 100}>
+            <motion.div 
+              key={index} 
+              className="feature-card" 
+              variants={fadeInUp}
+            >
               <div className="feature-icon">{feature.icon}</div>
               <h3>{feature.title}</h3>
               <p>{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         
         <div className="team-section">
-          <div className="team-content">
-            <div className="team-text">
+          <motion.div 
+            className="team-content"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+          >
+            <motion.div className="team-text" variants={fadeInUp}>
               <h3>Expertise, die sich auszahlt</h3>
               <p>
                 Mit jahrelanger Erfahrung im digitalen Marketing und etlichen erfolgreichen 
                 Projekten wissen wir genau, was funktioniert. Unser Fokus liegt auf messbaren 
                 Ergebnissen und nachhaltigem Wachstum für Ihr Unternehmen.
               </p>
-            </div>
-            <div className="team-image">
+            </motion.div>
+            <motion.div className="team-image" variants={fadeInUp}>
               <img 
                 src="https://images.unsplash.com/photo-1603202662706-62ead3176b8f" 
                 alt="Professionelle Beratung bei Rudi-Media"
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           
-          <div className="trust-indicators">
-            <div className="trust-item">
-              <h4>50+</h4>
+          <motion.div 
+            className="trust-indicators"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+          >
+            <motion.div className="trust-item" variants={fadeInUp}>
+              <h4><CounterAnimation target={50} />+</h4>
               <p>Erfolgreiche Projekte</p>
-            </div>
-            <div className="trust-item">
-              <h4>5+</h4>
+            </motion.div>
+            <motion.div className="trust-item" variants={fadeInUp}>
+              <h4><CounterAnimation target={5} />+</h4>
               <p>Jahre Erfahrung</p>
-            </div>
-            <div className="trust-item">
-              <h4>100%</h4>
+            </motion.div>
+            <motion.div className="trust-item" variants={fadeInUp}>
+              <h4><CounterAnimation target={100} />%</h4>
               <p>Kundenzufriedenheit</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
