@@ -10,8 +10,22 @@ const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [followerPosition, setFollowerPosition] = useState({ x: 0, y: 0 });
   const [isActive, setIsActive] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    // Don't show cursor on mobile
+    if (isMobile) {
+      return;
+    }
+
     let animationFrameId;
     
     const updateMousePosition = (e) => {
@@ -44,6 +58,7 @@ const CustomCursor = () => {
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
+      window.removeEventListener('resize', checkMobile);
       clickableElements.forEach(el => {
         el.removeEventListener('mouseenter', handleMouseEnter);
         el.removeEventListener('mouseleave', handleMouseLeave);
@@ -52,7 +67,12 @@ const CustomCursor = () => {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [position.x, position.y]);
+  }, [position.x, position.y, isMobile]);
+
+  // Don't render cursor on mobile
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <>
