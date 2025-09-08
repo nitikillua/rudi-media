@@ -530,7 +530,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <img 
-              src="https://customer-assets.emergentagent.com/job_87b36088-4f8b-4f3a-a10a-49faeb5d7cca/artifacts/q4wne5vk_das%20logo.svg" 
+              src="https://customer-assets.emergentagent.com/job_87b36088-4f8b-4f3a-a10a-49faeb5d7cca/artifacts/17d24le9_ohne%20hintergrund%20das%20gute%20Kopie.png" 
               alt="Rudi-Media Logo" 
               className="footer-logo"
             />
