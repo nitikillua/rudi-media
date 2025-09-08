@@ -5,7 +5,151 @@ import './App.css';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-// Custom Cursor Component
+// Cookie Banner Component
+const CookieBanner = () => {
+  const [showBanner, setShowBanner] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [cookieSettings, setCookieSettings] = useState({
+    necessary: true,
+    analytics: false,
+    marketing: false
+  });
+
+  useEffect(() => {
+    // Check if user has already made a choice
+    const cookieConsent = localStorage.getItem('cookieConsent');
+    if (!cookieConsent) {
+      setShowBanner(true);
+    }
+  }, []);
+
+  const acceptAllCookies = () => {
+    setCookieSettings({
+      necessary: true,
+      analytics: true,
+      marketing: true
+    });
+    localStorage.setItem('cookieConsent', JSON.stringify({
+      necessary: true,
+      analytics: true,
+      marketing: true,
+      timestamp: new Date().toISOString()
+    }));
+    setShowBanner(false);
+  };
+
+  const acceptSelectedCookies = () => {
+    localStorage.setItem('cookieConsent', JSON.stringify({
+      ...cookieSettings,
+      timestamp: new Date().toISOString()
+    }));
+    setShowBanner(false);
+    setShowSettings(false);
+  };
+
+  const rejectAllCookies = () => {
+    setCookieSettings({
+      necessary: true,
+      analytics: false,
+      marketing: false
+    });
+    localStorage.setItem('cookieConsent', JSON.stringify({
+      necessary: true,
+      analytics: false,
+      marketing: false,
+      timestamp: new Date().toISOString()
+    }));
+    setShowBanner(false);
+  };
+
+  if (!showBanner) return null;
+
+  return (
+    <div className="cookie-banner">
+      <div className="cookie-content">
+        {!showSettings ? (
+          <>
+            <div className="cookie-text">
+              <h3>🍪 Cookie-Einstellungen</h3>
+              <p>
+                Wir verwenden Cookies, um Ihnen die bestmögliche Nutzererfahrung auf unserer Website zu bieten. 
+                Dazu gehören essenzielle Cookies für den Betrieb der Seite sowie optionale Cookies für Analytics und Marketing.
+              </p>
+            </div>
+            <div className="cookie-buttons">
+              <button onClick={acceptAllCookies} className="cookie-btn primary">
+                Alle akzeptieren
+              </button>
+              <button onClick={() => setShowSettings(true)} className="cookie-btn secondary">
+                Auswählen
+              </button>
+              <button onClick={rejectAllCookies} className="cookie-btn reject">
+                Alle ablehnen
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="cookie-settings">
+              <h3>Cookie-Einstellungen anpassen</h3>
+              
+              <div className="cookie-category">
+                <div className="cookie-category-header">
+                  <label>
+                    <input 
+                      type="checkbox" 
+                      checked={cookieSettings.necessary}
+                      disabled={true}
+                    />
+                    <span>Notwendige Cookies</span>
+                  </label>
+                </div>
+                <p>Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.</p>
+              </div>
+
+              <div className="cookie-category">
+                <div className="cookie-category-header">
+                  <label>
+                    <input 
+                      type="checkbox" 
+                      checked={cookieSettings.analytics}
+                      onChange={(e) => setCookieSettings(prev => ({...prev, analytics: e.target.checked}))}
+                    />
+                    <span>Analytische Cookies</span>
+                  </label>
+                </div>
+                <p>Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, um sie zu verbessern.</p>
+              </div>
+
+              <div className="cookie-category">
+                <div className="cookie-category-header">
+                  <label>
+                    <input 
+                      type="checkbox" 
+                      checked={cookieSettings.marketing}
+                      onChange={(e) => setCookieSettings(prev => ({...prev, marketing: e.target.checked}))}
+                    />
+                    <span>Marketing Cookies</span>
+                  </label>
+                </div>
+                <p>Diese Cookies werden verwendet, um Ihnen relevante Werbeinhalte zu zeigen.</p>
+              </div>
+            </div>
+            
+            <div className="cookie-buttons">
+              <button onClick={acceptSelectedCookies} className="cookie-btn primary">
+                Auswahl speichern
+              </button>
+              <button onClick={() => setShowSettings(false)} className="cookie-btn secondary">
+                Zurück
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [followerPosition, setFollowerPosition] = useState({ x: 0, y: 0 });
