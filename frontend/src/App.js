@@ -679,7 +679,14 @@ const ContactForm = () => {
         >
           <motion.div className="contact-info" variants={fadeInUp}>
             <div className="contact-item">
-              <div className="contact-icon">📍</div>
+              <a 
+                href="https://www.google.com/maps/place/Kampenwandstr.+2,+85586+Poing/@48.1646,11.8139,17z"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-icon-link"
+              >
+                <div className="contact-icon">📍</div>
+              </a>
               <div>
                 <h4>Adresse</h4>
                 <p>Kampenwandstr. 2<br />85586 Poing</p>
@@ -687,7 +694,12 @@ const ContactForm = () => {
             </div>
             
             <div className="contact-item">
-              <div className="contact-icon">📞</div>
+              <a 
+                href="tel:+4915222539425"
+                className="contact-icon-link"
+              >
+                <div className="contact-icon">📞</div>
+              </a>
               <div>
                 <h4>Telefon</h4>
                 <p>+49 1522 2539425</p>
@@ -695,7 +707,12 @@ const ContactForm = () => {
             </div>
             
             <div className="contact-item">
-              <div className="contact-icon">✉️</div>
+              <a 
+                href="mailto:info@rudi-media.de?subject=Anfrage%20über%20Website&body=Hallo%20Rudi-Media,%0D%0A%0D%0Aich%20interessiere%20mich%20für%20Ihre%20Digital%20Marketing%20Leistungen.%0D%0A%0D%0ABitte%20kontaktieren%20Sie%20mich%20für%20ein%20unverbindliches%20Beratungsgespräch.%0D%0A%0D%0AMit%20freundlichen%20Grüßen"
+                className="contact-icon-link"
+              >
+                <div className="contact-icon">✉️</div>
+              </a>
               <div>
                 <h4>E-Mail</h4>
                 <p>info@rudi-media.de</p>
