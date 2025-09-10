@@ -615,6 +615,15 @@ body {
   gap: 20px;
 }
 
+.contact-icon-link {
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.contact-icon-link:hover {
+  transform: scale(1.1);
+}
+
 .contact-icon {
   font-size: 2rem;
   width: 60px;
@@ -625,6 +634,13 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-icon:hover {
+  box-shadow: 0 10px 30px rgba(30, 83, 249, 0.4);
+  transform: translateY(-3px);
 }
 
 .contact-item h4 {
