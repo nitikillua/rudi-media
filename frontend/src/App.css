@@ -1159,7 +1159,7 @@ body {
     flex-direction: column;
     justify-content: center;
     transition: left 0.3s ease;
-    z-index: 1000;
+    z-index: 1001;
   }
 
   .nav-menu.active {
@@ -1168,11 +1168,16 @@ body {
 
   .nav-toggle {
     display: flex;
-    z-index: 1001;
+    z-index: 1002;
   }
 
   .hero {
-    padding-top: 80px; /* Add padding to prevent title overlap */
+    padding-top: 100px; /* Increased from 80px to 100px for better clearance */
+    min-height: 100vh;
+  }
+
+  .hero-content {
+    padding-top: 20px; /* Additional padding for content */
   }
 
   .hero-buttons {
