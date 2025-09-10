@@ -423,7 +423,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="why-choose-us">
+    <section id="about" className="why-choose-us">
       <div className="container">
         <motion.div 
           className="section-header"
