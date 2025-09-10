@@ -474,7 +474,7 @@ const WhyChooseUs = () => {
             </motion.div>
             <motion.div className="team-image" variants={fadeInUp}>
               <img 
-                src="https://images.unsplash.com/photo-1603202662706-62ead3176b8f" 
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHw0fHxidXNpbmVzcyUyMHByb2Zlc3Npb25hbHxlbnwwfHx8fDE3NTc1NDc2NTB8MA&ixlib=rb-4.1.0&q=85" 
                 alt="Professionelle Beratung bei Rudi-Media"
               />
             </motion.div>
