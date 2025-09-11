@@ -474,8 +474,8 @@ const WhyChooseUs = () => {
             </motion.div>
             <motion.div className="team-image" variants={fadeInUp}>
               <img 
-                src="https://images.unsplash.com/photo-1542744094-f77e9f7a10b8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwbWFya2V0aW5nJTIwd29ya3NwYWNlfGVufDB8fHx8MTc1NzU0ODI3Nnww&ixlib=rb-4.1.0&q=85" 
-                alt="Digital Marketing Workspace bei Rudi-Media mit Analytics-Dashboards und mehreren Monitoren"
+                src="https://customer-assets.emergentagent.com/job_87b36088-4f8b-4f3a-a10a-49faeb5d7cca/artifacts/dhq0gyiw_schreibtisch.png" 
+                alt="Authentischer Arbeitsplatz von Rudi-Media: Video-Editing, Analytics und Webdesign auf drei Monitoren"
               />
             </motion.div>
           </motion.div>
