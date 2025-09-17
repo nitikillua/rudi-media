@@ -680,21 +680,6 @@ const ContactForm = () => {
           <motion.div className="contact-info" variants={fadeInUp}>
             <div className="contact-item">
               <a 
-                href="https://www.google.com/maps/place/Kampenwandstr.+2,+85586+Poing/@48.1646,11.8139,17z"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-icon-link"
-              >
-                <div className="contact-icon">📍</div>
-              </a>
-              <div>
-                <h4>Adresse</h4>
-                <p>Kampenwandstr. 2<br />85586 Poing</p>
-              </div>
-            </div>
-            
-            <div className="contact-item">
-              <a 
                 href="tel:+4915222539425"
                 className="contact-icon-link"
               >
