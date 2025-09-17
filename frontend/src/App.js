@@ -324,7 +324,7 @@ const Navigation = () => {
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <Link to="/" className="nav-link" onClick={handleMenuClick}>Home</Link>
           <a href="/#services" className="nav-link" onClick={handleMenuClick}>Leistungen</a>
-          <a href="/#about" className="nav-link" onClick={handleMenuClick}>Über uns</a>
+          <Link to="/about" className="nav-link" onClick={handleMenuClick}>Über uns</Link>
           <Link to="/blog" className="nav-link" onClick={handleMenuClick}>Blog</Link>
           <a href="/#contact" className="nav-link" onClick={handleMenuClick}>Kontakt</a>
         </div>
