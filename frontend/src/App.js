@@ -1046,14 +1046,52 @@ const BlogList = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Fallback static blog posts if backend is not available
+  const staticPosts = [
+    {
+      id: "1",
+      title: "Warum Social Media Marketing für Ihr Unternehmen unverzichtbar ist",
+      excerpt: "Entdecken Sie, warum Social Media Marketing für Ihr Unternehmen unverzichtbar ist und wie es Ihnen helfen kann, Ihre Ziele zu erreichen.",
+      author: "Arjanit Rudi",
+      created_at: new Date().toISOString(),
+      tags: ["Social Media", "Marketing", "Digital Marketing"],
+      slug: "warum-social-media-marketing-unverzichtbar-ist"
+    },
+    {
+      id: "2", 
+      title: "Google Ads vs. Meta Ads: Welche Plattform ist die richtige für Sie?",
+      excerpt: "Google Ads oder Meta Ads? Erfahren Sie, welche Plattform für Ihre Marketingziele am besten geeignet ist.",
+      author: "Arjanit Rudi",
+      created_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+      tags: ["Google Ads", "Meta Ads", "Online Werbung", "PPC"],
+      slug: "google-ads-vs-meta-ads-vergleich"
+    },
+    {
+      id: "3",
+      title: "SEO-Trends 2025: Was Sie jetzt wissen müssen", 
+      excerpt: "Entdecken Sie die wichtigsten SEO-Trends für 2025 und erfahren Sie, wie Sie Ihre Website für die Zukunft optimieren.",
+      author: "Arjanit Rudi",
+      created_at: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
+      tags: ["SEO", "Google", "Website Optimierung", "Trends 2025"],
+      slug: "seo-trends-2025"
+    }
+  ];
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await fetch(`${API}/blog/posts`);
-        const data = await response.json();
-        setPosts(data);
+        if (response.ok) {
+          const data = await response.json();
+          setPosts(data);
+        } else {
+          // Fallback to static posts if backend is not available
+          console.log("Backend not available, using static posts");
+          setPosts(staticPosts);
+        }
       } catch (error) {
-        console.error('Error fetching blog posts:', error);
+        console.error('Error fetching blog posts, using static posts:', error);
+        setPosts(staticPosts);
       } finally {
         setLoading(false);
       }
