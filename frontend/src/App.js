@@ -1074,6 +1074,33 @@ const BlogList = () => {
       created_at: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
       tags: ["SEO", "Google", "Website Optimierung", "Trends 2025"],
       slug: "seo-trends-2025"
+    },
+    {
+      id: "4",
+      title: "Die ultimative Social Media Content-Strategie für 2025",
+      excerpt: "Lernen Sie, wie Sie eine Social Media Content-Strategie entwickeln, die Engagement generiert und echte Geschäftsergebnisse liefert.",
+      author: "Arjanit Rudi",
+      created_at: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+      tags: ["Social Media", "Content Marketing", "Strategie"],
+      slug: "social-media-content-strategie-2025"
+    },
+    {
+      id: "5",
+      title: "Google Ads Optimierung: 7 Strategien für maximalen ROI",
+      excerpt: "Maximieren Sie Ihren Google Ads ROI mit diesen 7 bewährten Optimierungsstrategien von unseren PPC-Experten.",
+      author: "Arjanit Rudi",
+      created_at: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+      tags: ["Google Ads", "PPC", "Online Marketing", "ROI Optimierung"],
+      slug: "google-ads-optimierung-strategien"
+    },
+    {
+      id: "6",
+      title: "Local SEO: Wie Sie in lokalen Suchergebnissen dominieren",
+      excerpt: "Dominieren Sie die lokalen Suchergebnisse mit unserer umfassenden Local SEO Anleitung für mehr Sichtbarkeit und Kunden.",
+      author: "Arjanit Rudi",
+      created_at: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(),
+      tags: ["Local SEO", "Google My Business", "Lokale Suche", "SEO"],
+      slug: "local-seo-strategien-lokale-suche"
     }
   ];
 
