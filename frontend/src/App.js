@@ -861,7 +861,187 @@ const Footer = () => {
   );
 };
 
-// Blog Components
+// About Page Component
+const AboutPage = () => {
+  const features = [
+    {
+      icon: "🎯",
+      title: "Zielgerichtete Strategien",
+      description: "Maßgeschneiderte Marketing-Lösungen, die auf Ihre spezifischen Unternehmensziele ausgerichtet sind."
+    },
+    {
+      icon: "📈",
+      title: "Messbare Erfolge", 
+      description: "Transparente Reporting-Systeme zeigen Ihnen genau, wie sich Ihr Investment in Marketing auszahlt."
+    },
+    {
+      icon: "🤝",
+      title: "Marketing aus einer Hand",
+      description: "SEO-Agentur, Social-Media-Agentur etc. in Einem. Ein Ansprechpartner für alle Ihre Marketing-Bedürfnisse."
+    },
+    {
+      icon: "👥",
+      title: "Persönliche Betreuung",
+      description: "Direkter Kontakt zu Ihrem Marketing-Experten – keine Warteschleifen, keine Anonymität."
+    }
+  ];
+
+  return (
+    <div className="about-page">
+      <Navigation />
+      
+      <section className="about-hero">
+        <div className="container">
+          <motion.div 
+            className="about-hero-content"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+          >
+            <h1>Über Rudi-Media</h1>
+            <p>Ihr Partner für professionelles Digital Marketing</p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="about-story">
+        <div className="container">
+          <motion.div 
+            className="story-content"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+          >
+            <motion.div className="story-text" variants={fadeInUp}>
+              <h2>Meine Geschichte</h2>
+              <p>
+                Als Digital Marketing Experte mit über 5 Jahren Erfahrung habe ich Rudi-Media mit einer klaren Vision gegründet: 
+                Unternehmen dabei zu helfen, ihre digitalen Ziele zu erreichen und nachhaltiges Wachstum zu generieren.
+              </p>
+              <p>
+                Mein Name ist Arjanit Rudi, und ich brenne für innovatives Online-Marketing. Von Social Media Strategien über 
+                professionelle Google Ads Kampagnen bis hin zu suchmaschinenoptimiertem Webdesign – ich biete alles aus einer Hand.
+              </p>
+              <p>
+                Was mich besonders auszeichnet, ist mein persönlicher Ansatz. Jeder Kunde erhält eine maßgeschneiderte Strategie, 
+                die perfekt zu seinen Zielen und seinem Budget passt. Keine Standard-Lösungen, sondern echte, messbare Ergebnisse.
+              </p>
+            </motion.div>
+            
+            <motion.div className="story-image" variants={fadeInUp}>
+              <img 
+                src="https://customer-assets.emergentagent.com/job_87b36088-4f8b-4f3a-a10a-49faeb5d7cca/artifacts/dhq0gyiw_schreibtisch.png" 
+                alt="Arjanit Rudi bei der Arbeit - Rudi-Media Workspace"
+              />
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+      
+      <section className="about-values">
+        <div className="container">
+          <motion.div 
+            className="section-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+          >
+            <h2>Warum Rudi-Media?</h2>
+            <p>Meine Werte und Ihr Vorteil</p>
+          </motion.div>
+          
+          <motion.div 
+            className="features-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+          >
+            {features.map((feature, index) => (
+              <motion.div 
+                key={index} 
+                className="feature-card" 
+                variants={fadeInUp}
+              >
+                <div className="feature-icon">{feature.icon}</div>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="about-numbers">
+        <div className="container">
+          <motion.div 
+            className="section-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+          >
+            <h2>Fakten sprechen für sich</h2>
+            <p>Meine Erfolge in Zahlen</p>
+          </motion.div>
+          
+          <motion.div 
+            className="trust-indicators"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+          >
+            <motion.div className="trust-item" variants={fadeInUp}>
+              <h4><CounterAnimation target={50} /></h4>
+              <p>Erfolgreiche Projekte</p>
+            </motion.div>
+            <motion.div className="trust-item" variants={fadeInUp}>
+              <h4><CounterAnimation target={5} /></h4>
+              <p>Jahre Erfahrung</p>
+            </motion.div>
+            <motion.div className="trust-item" variants={fadeInUp}>
+              <h4><CounterAnimation target={100} />%</h4>
+              <p>Kundenzufriedenheit</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="about-cta">
+        <div className="container">
+          <motion.div 
+            className="cta-content"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+          >
+            <h2>Bereit für Ihren digitalen Erfolg?</h2>
+            <p>Lassen Sie uns gemeinsam Ihre Online-Präsenz auf das nächste Level bringen!</p>
+            <div className="cta-buttons">
+              <Link to="/#contact" className="btn-primary">
+                Kostenlose Beratung
+              </Link>
+              <a 
+                href="https://wa.me/4915222539425?text=Hallo%20Rudi-Media,%20ich%20möchte%20mehr%20über%20Sie%20und%20Ihre%20Digital%20Marketing%20Leistungen%20erfahren."
+                className="btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp Chat
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+      
+      <Footer />
+    </div>
+  );
+};
 const BlogList = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
