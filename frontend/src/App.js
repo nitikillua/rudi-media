@@ -1498,6 +1498,7 @@ function App() {
       <CustomCursor />
       <CookieBanner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
