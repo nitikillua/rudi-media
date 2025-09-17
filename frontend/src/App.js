@@ -1170,6 +1170,111 @@ const BlogPost = () => {
   // Get slug from URL
   const slug = window.location.pathname.split('/').pop();
 
+  // Static blog posts with full content
+  const staticPosts = {
+    "warum-social-media-marketing-unverzichtbar-ist": {
+      id: "1",
+      title: "Warum Social Media Marketing für Ihr Unternehmen unverzichtbar ist",
+      content: `
+        <p>In der heutigen digitalen Welt ist Social Media Marketing nicht mehr nur eine Option – es ist eine Notwendigkeit für jedes Unternehmen, das erfolgreich sein möchte.</p>
+        
+        <h3>Die Macht der sozialen Medien</h3>
+        <p>Mit über 4,8 Milliarden aktiven Social Media Nutzern weltweit bieten Plattformen wie Facebook, Instagram, LinkedIn und TikTok eine unglaubliche Reichweite für Ihr Unternehmen.</p>
+        
+        <h3>Vorteile von professionellem Social Media Marketing:</h3>
+        <ul>
+            <li><strong>Erhöhte Markenbekanntheit:</strong> Regelmäßige, hochwertige Inhalte steigern die Sichtbarkeit Ihrer Marke</li>
+            <li><strong>Direkter Kundenkontakt:</strong> Interaktion und Engagement mit Ihrer Zielgruppe in Echtzeit</li>
+            <li><strong>Kostengünstige Werbung:</strong> Gezieltes Targeting zu einem Bruchteil traditioneller Werbekosten</li>
+            <li><strong>Messbare Ergebnisse:</strong> Detaillierte Analytics für kontinuierliche Optimierung</li>
+        </ul>
+        
+        <p>Bei Rudi-Media entwickeln wir maßgeschneiderte Social Media Strategien, die Ihre Unternehmensziele unterstützen und messbare Ergebnisse liefern.</p>
+      `,
+      excerpt: "Entdecken Sie, warum Social Media Marketing für Ihr Unternehmen unverzichtbar ist und wie es Ihnen helfen kann, Ihre Ziele zu erreichen.",
+      author: "Arjanit Rudi",
+      created_at: new Date().toISOString(),
+      tags: ["Social Media", "Marketing", "Digital Marketing"],
+      slug: "warum-social-media-marketing-unverzichtbar-ist"
+    },
+    "google-ads-vs-meta-ads-vergleich": {
+      id: "2",
+      title: "Google Ads vs. Meta Ads: Welche Plattform ist die richtige für Sie?",
+      content: `
+        <p>Die Wahl zwischen Google Ads und Meta Ads (Facebook/Instagram) ist eine der häufigsten Fragen unserer Kunden. Beide Plattformen haben ihre Stärken – die richtige Wahl hängt von Ihren spezifischen Zielen ab.</p>
+        
+        <h3>Google Ads – Der Klassiker für gezielte Suche</h3>
+        <p><strong>Vorteile:</strong></p>
+        <ul>
+            <li>Nutzer suchen aktiv nach Ihren Produkten/Dienstleistungen</li>
+            <li>Hohe Kaufbereitschaft der Zielgruppe</li>
+            <li>Vielfältige Anzeigenformate (Text, Shopping, Display)</li>
+            <li>Lokale Ausrichtung möglich</li>
+        </ul>
+        
+        <h3>Meta Ads – Emotionale Ansprache und Reichweite</h3>
+        <p><strong>Vorteile:</strong></p>
+        <ul>
+            <li>Detailliertes Targeting nach Interessen und Verhalten</li>
+            <li>Visuelle, ansprechende Anzeigenformate</li>
+            <li>Große Reichweite, besonders bei jüngeren Zielgruppen</li>
+            <li>Günstigere Kosten pro Klick</li>
+        </ul>
+        
+        <h3>Unsere Empfehlung: Eine kombinierte Strategie</h3>
+        <p>Die besten Ergebnisse erzielen unsere Kunden mit einer durchdachten Kombination beider Plattformen:</p>
+        <ul>
+            <li><strong>Google Ads</strong> für die Erfassung von Suchintentionen</li>
+            <li><strong>Meta Ads</strong> für Markenbekanntheit und Retargeting</li>
+        </ul>
+        
+        <p>Wir analysieren Ihre Zielgruppe und entwickeln die optimale Strategie für Ihr Unternehmen.</p>
+      `,
+      excerpt: "Google Ads oder Meta Ads? Erfahren Sie, welche Plattform für Ihre Marketingziele am besten geeignet ist.",
+      author: "Arjanit Rudi",
+      created_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+      tags: ["Google Ads", "Meta Ads", "Online Werbung", "PPC"],
+      slug: "google-ads-vs-meta-ads-vergleich"
+    },
+    "seo-trends-2025": {
+      id: "3",
+      title: "SEO-Trends 2025: Was Sie jetzt wissen müssen",
+      content: `
+        <p>Suchmaschinenoptimierung entwickelt sich ständig weiter. Hier sind die wichtigsten SEO-Trends für 2025, die Ihre Website-Strategie beeinflussen werden.</p>
+        
+        <h3>1. KI-gestützte Inhalte und E-A-T</h3>
+        <p>Google legt zunehmend Wert auf Expertise, Autorität und Vertrauenswürdigkeit (E-A-T). Hochwertige, von Experten erstellte Inhalte werden noch wichtiger.</p>
+        
+        <h3>2. Core Web Vitals und Page Experience</h3>
+        <p>Die Ladegeschwindigkeit und Nutzerfreundlichkeit Ihrer Website sind entscheidende Ranking-Faktoren:</p>
+        <ul>
+            <li>Largest Contentful Paint (LCP) unter 2,5 Sekunden</li>
+            <li>First Input Delay (FID) unter 100 Millisekunden</li>
+            <li>Cumulative Layout Shift (CLS) unter 0,1</li>
+        </ul>
+        
+        <h3>3. Lokale SEO wird wichtiger</h3>
+        <p>Für lokale Unternehmen ist die Optimierung für "Near Me"-Suchen entscheidend:</p>
+        <ul>
+            <li>Google My Business Profil pflegen</li>
+            <li>Lokale Keywords verwenden</li>
+            <li>Positive Bewertungen sammeln</li>
+        </ul>
+        
+        <h3>4. Voice Search Optimierung</h3>
+        <p>Mit der zunehmenden Nutzung von Sprachassistenten wird die Optimierung für gesprochene Suchanfragen immer wichtiger.</p>
+        
+        <h3>Unser SEO-Ansatz bei Rudi-Media</h3>
+        <p>Wir kombinieren technische SEO-Expertise mit hochwertiger Content-Strategie, um nachhaltige Ergebnisse zu erzielen. Von der On-Page-Optimierung bis zur Local-SEO-Betreuung – wir sorgen dafür, dass Ihre Website bei Google gefunden wird.</p>
+      `,
+      excerpt: "Entdecken Sie die wichtigsten SEO-Trends für 2025 und erfahren Sie, wie Sie Ihre Website für die Zukunft optimieren.",
+      author: "Arjanit Rudi",
+      created_at: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
+      tags: ["SEO", "Google", "Website Optimierung", "Trends 2025"],
+      slug: "seo-trends-2025"
+    }
+  };
+
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -1178,11 +1283,23 @@ const BlogPost = () => {
           const data = await response.json();
           setPost(data);
         } else {
-          setError('Blog-Beitrag nicht gefunden');
+          // Fallback to static post if backend is not available
+          console.log("Backend not available, using static post");
+          const staticPost = staticPosts[slug];
+          if (staticPost) {
+            setPost(staticPost);
+          } else {
+            setError('Blog-Beitrag nicht gefunden');
+          }
         }
       } catch (error) {
-        console.error('Error fetching blog post:', error);
-        setError('Fehler beim Laden des Beitrags');
+        console.error('Error fetching blog post, using static post:', error);
+        const staticPost = staticPosts[slug];
+        if (staticPost) {
+          setPost(staticPost);
+        } else {
+          setError('Blog-Beitrag nicht gefunden');
+        }
       } finally {
         setLoading(false);
       }
