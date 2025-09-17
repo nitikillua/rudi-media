@@ -39,18 +39,18 @@ const CounterAnimation = ({ target, duration = 2 }) => {
   );
 };
 
-// Animation variants
+// Animation variants - Mobile optimized
 const fadeInUp = {
   hidden: { 
     opacity: 0, 
-    y: 60,
-    transition: { duration: 0.6 }
+    y: 30, // Reduced from 60 for smoother mobile performance
+    transition: { duration: 0.4 } // Reduced duration
   },
   visible: { 
     opacity: 1, 
     y: 0,
     transition: { 
-      duration: 0.6,
+      duration: 0.4, // Reduced duration
       ease: "easeOut"
     }
   }
@@ -59,7 +59,7 @@ const fadeInUp = {
 const stagger = {
   visible: {
     transition: {
-      staggerChildren: 0.2
+      staggerChildren: 0.1 // Reduced from 0.2 for faster mobile loading
     }
   }
 };
