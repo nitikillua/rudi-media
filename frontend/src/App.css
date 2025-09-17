@@ -26,7 +26,22 @@ body {
   padding: 0 20px;
 }
 
-/* Custom cursor */
+/* Mobile Animation Fix */
+@media (max-width: 768px) {
+  /* Disable complex animations on mobile for better performance */
+  .feature-card,
+  .service-card,
+  .post-card {
+    animation: none !important;
+    transition: transform 0.2s ease !important;
+  }
+  
+  /* Simplified mobile animations */
+  .feature-card:hover,
+  .service-card:hover {
+    transform: translateY(-5px) !important;
+  }
+}
 @media (max-width: 768px) {
   body {
     cursor: auto !important;
