@@ -318,6 +318,7 @@ const CustomCursor = () => {
 // Components
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const scrollToTop = useScrollToTop();
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -328,12 +329,20 @@ const Navigation = () => {
     if (window.innerWidth <= 768) {
       closeMenu();
     }
+    // Scroll to top when navigating to new page
+    setTimeout(scrollToTop, 100);
+  };
+
+  const handleLinkClick = () => {
+    // Scroll to top immediately when clicking navigation links
+    scrollToTop();
+    closeMenu();
   };
 
   return (
     <nav className="navigation">
       <div className="nav-container">
-        <Link to="/" className="logo">
+        <Link to="/" className="logo" onClick={handleLinkClick}>
           <img 
             src="https://customer-assets.emergentagent.com/job_87b36088-4f8b-4f3a-a10a-49faeb5d7cca/artifacts/17d24le9_ohne%20hintergrund%20das%20gute%20Kopie.png" 
             alt="Rudi-Media Logo" 
@@ -342,10 +351,10 @@ const Navigation = () => {
         </Link>
         
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <Link to="/" className="nav-link" onClick={handleMenuClick}>Home</Link>
+          <Link to="/" className="nav-link" onClick={handleLinkClick}>Home</Link>
           <a href="/#services" className="nav-link" onClick={handleMenuClick}>Leistungen</a>
-          <Link to="/about" className="nav-link" onClick={handleMenuClick}>Über uns</Link>
-          <Link to="/blog" className="nav-link" onClick={handleMenuClick}>Blog</Link>
+          <Link to="/about" className="nav-link" onClick={handleLinkClick}>Über uns</Link>
+          <Link to="/blog" className="nav-link" onClick={handleLinkClick}>Blog</Link>
           <a href="/#contact" className="nav-link" onClick={handleMenuClick}>Kontakt</a>
         </div>
         
