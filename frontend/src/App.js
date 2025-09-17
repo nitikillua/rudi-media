@@ -6,7 +6,27 @@ import './App.css';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-// Counter Animation Component
+// ScrollToTop component
+const ScrollToTop = () => {
+  const location = window.location;
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return null;
+};
+
+// Custom hook for scroll to top
+const useScrollToTop = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+  return scrollToTop;
+};
 const CounterAnimation = ({ target, duration = 2 }) => {
   const [count, setCount] = useState(0);
   const ref = useRef();
