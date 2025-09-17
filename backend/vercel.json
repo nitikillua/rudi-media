@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "server.py"
+    }
+  ],
+  "env": {
+    "MONGO_URL": "@mongo_url",
+    "DB_NAME": "rudi_media_db",
+    "CORS_ORIGINS": "*",
+    "SENDGRID_API_KEY": "@sendgrid_api_key",
+    "SENDER_EMAIL": "info@rudi-media.de"
+  }
+}
