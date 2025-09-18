@@ -6,13 +6,16 @@ import './App.css';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-// ScrollToTop component
+// ScrollToTop component - fixed to ignore anchor links
 const ScrollToTop = () => {
   const location = window.location;
   
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    // Only scroll to top if it's NOT an anchor link (hash)
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
 
   return null;
 };
