@@ -332,8 +332,7 @@ const Navigation = () => {
     if (window.innerWidth <= 768) {
       closeMenu();
     }
-    // Scroll to top when navigating to new page
-    setTimeout(scrollToTop, 100);
+    // Don't scroll to top for anchor links - let them work naturally
   };
 
   const handleLinkClick = () => {
