@@ -1263,7 +1263,7 @@ const AdminBlogEditor = () => {
     <div className="admin-blog-editor">
       <div className="admin-header">
         <h1>{isEditing ? 'Edit Blog Post' : 'Create New Blog Post'}</h1>
-        <Link to="/admin/posts" className="btn-secondary">Back to Posts</Link>
+        <Link to="/admin/posts" className="admin-btn-secondary">Back to Posts</Link>
       </div>
 
       <form onSubmit={handleSubmit} className="blog-editor-form">
