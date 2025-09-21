@@ -222,10 +222,10 @@
 
 ## test_plan:
   current_focus:
-    - "Deploy FastAPI backend to Vercel"
-    - "Create admin authentication system"
     - "Create admin panel route and components"
     - "Build blog post editor with rich text"
+    - "Add image upload functionality"
+    - "Connect frontend to deployed backend"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
