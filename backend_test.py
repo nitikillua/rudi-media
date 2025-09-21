@@ -14,20 +14,39 @@ class RudiMediaAPITester:
         self.errors = []
         self.admin_token = None
 
-    def run_test(self, name, method, endpoint, expected_status, data=None, check_response=None):
+    def run_test(self, name, method, endpoint, expected_status, data=None, check_response=None, files=None, use_auth=False):
         """Run a single API test"""
         url = f"{self.api_url}/{endpoint}" if endpoint else f"{self.api_url}/"
-        headers = {'Content-Type': 'application/json'}
+        headers = {}
+        
+        # Add authentication header if needed
+        if use_auth and self.admin_token:
+            headers['Authorization'] = f"Bearer {self.admin_token}"
+        
+        # Set content type for JSON requests
+        if not files:
+            headers['Content-Type'] = 'application/json'
 
         self.tests_run += 1
         print(f"\n🔍 Testing {name}...")
         print(f"   URL: {url}")
+        if use_auth:
+            print(f"   Using Auth: {'Yes' if self.admin_token else 'No token available'}")
         
         try:
             if method == 'GET':
                 response = requests.get(url, headers=headers, timeout=10)
             elif method == 'POST':
-                response = requests.post(url, json=data, headers=headers, timeout=10)
+                if files:
+                    # Remove Content-Type for file uploads (requests will set it automatically)
+                    headers.pop('Content-Type', None)
+                    response = requests.post(url, files=files, headers=headers, timeout=10)
+                else:
+                    response = requests.post(url, json=data, headers=headers, timeout=10)
+            elif method == 'PUT':
+                response = requests.put(url, json=data, headers=headers, timeout=10)
+            elif method == 'DELETE':
+                response = requests.delete(url, headers=headers, timeout=10)
 
             print(f"   Status Code: {response.status_code}")
             
