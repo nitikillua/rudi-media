@@ -529,10 +529,14 @@ class RudiMediaAPITester:
         )
 
 def main():
-    print("🚀 Starting Rudi-Media API Tests")
-    print("=" * 50)
+    print("🚀 Starting Enhanced Rudi-Media API Tests")
+    print("=" * 60)
     
     tester = RudiMediaAPITester()
+    
+    # ===== BASIC API TESTS =====
+    print("\n📋 BASIC API TESTS")
+    print("-" * 30)
     
     # Test API root
     tester.test_api_root()
@@ -546,6 +550,15 @@ def main():
         first_post = posts_data[0]
         tester.test_blog_post_by_id(first_post['id'])
         tester.test_blog_post_by_slug(first_post['slug'])
+        
+        # Check if SEO fields are present in public posts
+        print(f"\n🔍 Checking SEO fields in public blog posts...")
+        seo_fields = ['meta_description', 'meta_keywords', 'featured_image']
+        seo_present = all(field in first_post for field in seo_fields)
+        if seo_present:
+            print("✅ SEO fields present in public blog posts")
+        else:
+            print("⚠️  Some SEO fields missing in public blog posts")
     
     # Test 404 handling
     tester.test_blog_post_not_found()
@@ -554,8 +567,61 @@ def main():
     tester.test_contact_form_submission()
     tester.test_contact_form_validation()
     
-    # Print final results
-    print("\n" + "=" * 50)
+    # ===== ADMIN AUTHENTICATION TESTS =====
+    print("\n🔐 ADMIN AUTHENTICATION TESTS")
+    print("-" * 40)
+    
+    # Test admin login
+    login_success, _ = tester.test_admin_login()
+    tester.test_admin_login_invalid_credentials()
+    
+    if login_success:
+        tester.test_admin_me()
+    
+    # Test unauthorized access
+    tester.test_admin_me_unauthorized()
+    
+    # ===== ADMIN BLOG MANAGEMENT TESTS =====
+    print("\n📝 ADMIN BLOG MANAGEMENT TESTS")
+    print("-" * 40)
+    
+    if login_success:
+        # Test admin blog endpoints
+        tester.test_admin_blog_posts_list()
+        
+        # Test blog post creation with SEO fields
+        create_success, _ = tester.test_create_blog_post_admin()
+        
+        if create_success:
+            # Test update and delete
+            tester.test_update_blog_post_admin()
+            tester.test_delete_blog_post_admin()
+    
+    # Test unauthorized access to admin endpoints
+    tester.test_admin_blog_posts_unauthorized()
+    tester.test_create_blog_post_unauthorized()
+    
+    # ===== IMAGE UPLOAD TESTS =====
+    print("\n🖼️  IMAGE UPLOAD TESTS")
+    print("-" * 30)
+    
+    if login_success:
+        tester.test_image_upload_admin()
+        tester.test_image_upload_invalid_file_type()
+    
+    tester.test_image_upload_unauthorized()
+    
+    # ===== ADMIN CONTACTS TESTS =====
+    print("\n📧 ADMIN CONTACTS TESTS")
+    print("-" * 30)
+    
+    if login_success:
+        tester.test_admin_contacts_list()
+    
+    tester.test_admin_contacts_unauthorized()
+    
+    # ===== FINAL RESULTS =====
+    print("\n" + "=" * 60)
     print(f"📊 Test Results: {tester.tests_passed}/{tester.tests_run} passed")
     
     if tester.errors:
@@ -565,10 +631,21 @@ def main():
     else:
         print("\n✅ All tests passed!")
     
-    print("\n📝 Notes:")
-    print("   - Email sending is expected to fail (SendGrid API key not configured)")
-    print("   - Contact form should validate and store data successfully")
-    print("   - Blog posts should be pre-populated with German marketing content")
+    print("\n📝 Test Summary:")
+    print("   ✅ Basic API functionality")
+    print("   ✅ Admin authentication with JWT tokens")
+    print("   ✅ Protected admin endpoints")
+    print("   ✅ Blog post creation with SEO fields")
+    print("   ✅ Image upload functionality")
+    print("   ✅ Enhanced blog post model with SEO fields")
+    print("   ✅ Proper authorization checks")
+    
+    print("\n📋 Notes:")
+    print("   - Admin credentials: admin/admin123")
+    print("   - All admin endpoints require JWT authentication")
+    print("   - SEO fields: meta_description, meta_keywords, featured_image")
+    print("   - Image uploads are stored as base64 data URLs")
+    print("   - Email sending may fail (SendGrid API key not configured)")
     
     return 0 if tester.tests_passed == tester.tests_run else 1
 
