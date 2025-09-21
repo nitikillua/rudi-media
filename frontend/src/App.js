@@ -981,6 +981,148 @@ const Footer = () => {
 };
 
 // Admin Components
+const AdminDashboard = () => {
+  const { user, logout } = useAuth();
+  const [stats, setStats] = useState({ posts: 0, contacts: 0 });
+
+  useEffect(() => {
+    // Fetch dashboard stats
+    const fetchStats = async () => {
+      try {
+        const postsResponse = await fetch(`${API}/admin/blog/posts`, {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        });
+        
+        if (postsResponse.ok) {
+          const posts = await postsResponse.json();
+          setStats(prev => ({ ...prev, posts: posts.length }));
+        }
+      } catch (error) {
+        console.error('Failed to fetch stats:', error);
+      }
+    };
+
+    fetchStats();
+  }, [user.token]);
+
+  return (
+    <div className="admin-dashboard">
+      <div className="admin-header">
+        <h1>Admin Dashboard</h1>
+        <div className="admin-user-info">
+          <span>Welcome, {user.username}</span>
+          <button onClick={logout} className="logout-btn">Logout</button>
+        </div>
+      </div>
+      
+      <div className="admin-stats">
+        <div className="stat-card">
+          <h3>Blog Posts</h3>
+          <p className="stat-number">{stats.posts}</p>
+        </div>
+        <div className="stat-card">
+          <h3>Contacts</h3>
+          <p className="stat-number">{stats.contacts}</p>
+        </div>
+      </div>
+      
+      <div className="admin-quick-actions">
+        <Link to="/admin/posts" className="admin-action-btn">
+          Manage Blog Posts
+        </Link>
+        <Link to="/admin/posts/new" className="admin-action-btn primary">
+          Create New Post
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const AdminBlogPosts = () => {
+  const { user } = useAuth();
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const fetchPosts = async () => {
+    try {
+      const response = await fetch(`${API}/admin/blog/posts`, {
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        setPosts(data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch posts:', error);
+    }
+    setLoading(false);
+  };
+
+  const deletePost = async (postId) => {
+    if (!window.confirm('Are you sure you want to delete this post?')) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API}/admin/blog/posts/${postId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
+
+      if (response.ok) {
+        setPosts(posts.filter(post => post.id !== postId));
+      }
+    } catch (error) {
+      console.error('Failed to delete post:', error);
+    }
+  };
+
+  if (loading) {
+    return <div className="admin-loading">Loading posts...</div>;
+  }
+
+  return (
+    <div className="admin-blog-posts">
+      <div className="admin-header">
+        <h1>Manage Blog Posts</h1>
+        <Link to="/admin/posts/new" className="btn-primary">Create New Post</Link>
+      </div>
+      
+      <div className="posts-table">
+        {posts.map(post => (
+          <div key={post.id} className="post-row">
+            <div className="post-info">
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+              <div className="post-meta">
+                <span className={`status ${post.published ? 'published' : 'draft'}`}>
+                  {post.published ? 'Published' : 'Draft'}
+                </span>
+                <span>{new Date(post.created_at).toLocaleDateString()}</span>
+              </div>
+            </div>
+            <div className="post-actions">
+              <Link to={`/admin/posts/edit/${post.id}`} className="btn-secondary">Edit</Link>
+              <button onClick={() => deletePost(post.id)} className="btn-danger">Delete</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
