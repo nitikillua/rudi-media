@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, createContext, useContext } from 'r
 import { BrowserRouter, Routes, Route, Link, Navigate, useNavigate } from 'react-router-dom';
 import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import MDEditor from '@uiw/react-md-editor';
+import ReactMarkdown from 'react-markdown';
 import './App.css';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
