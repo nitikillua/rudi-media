@@ -1420,6 +1420,8 @@ const AdminBlogEditor = () => {
     </div>
   );
 };
+
+const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
