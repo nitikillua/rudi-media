@@ -266,6 +266,7 @@ body {
   background: linear-gradient(135deg, #1e53f9, #3afaff);
   color: #fff;
   box-shadow: 0 10px 30px rgba(30, 83, 249, 0.3);
+  border: none;
 }
 
 .btn-primary:hover {
