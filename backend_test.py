@@ -374,7 +374,7 @@ class RudiMediaAPITester:
             "Create Blog Post - Unauthorized",
             "POST",
             "admin/blog/posts",
-            401,
+            403,  # FastAPI returns 403 for missing auth
             data=blog_post_data
         )
 
