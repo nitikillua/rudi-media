@@ -2008,7 +2008,7 @@ const BlogPost = () => {
           </header>
           
           <div className="post-content">
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <ReactMarkdown>{post.content}</ReactMarkdown>
           </div>
           
           <footer className="post-footer">
