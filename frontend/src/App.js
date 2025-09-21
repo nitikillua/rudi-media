@@ -2097,19 +2097,44 @@ const Home = () => {
 
 function App() {
   return (
-    <div className="App">
-      <CustomCursor />
-      <CookieBanner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/blog" element={<BlogList />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <AuthProvider>
+      <div className="App">
+        <CustomCursor />
+        <CookieBanner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/blog" element={<BlogList />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/posts" element={
+              <ProtectedRoute>
+                <AdminBlogPosts />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/posts/new" element={
+              <ProtectedRoute>
+                <AdminBlogEditor />
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/posts/edit/:id" element={
+              <ProtectedRoute>
+                <AdminBlogEditor />
+              </ProtectedRoute>
+            } />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </AuthProvider>
   );
 }
 
