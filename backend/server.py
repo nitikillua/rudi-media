@@ -1,5 +1,6 @@
-from fastapi import FastAPI, APIRouter, HTTPException, BackgroundTasks
+from fastapi import FastAPI, APIRouter, HTTPException, BackgroundTasks, Depends, status, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field, EmailStr
@@ -7,10 +8,14 @@ from typing import List, Optional
 from datetime import datetime, timezone, timedelta
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+from passlib.context import CryptContext
+from jose import JWTError, jwt
 import os
 import uuid
 import logging
 from pathlib import Path
+import aiofiles
+import base64
 
 # Load environment variables
 ROOT_DIR = Path(__file__).parent
