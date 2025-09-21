@@ -1399,10 +1399,10 @@ const AdminBlogEditor = () => {
         </div>
 
         <div className="form-actions">
-          <button type="submit" disabled={loading} className="btn-primary">
+          <button type="submit" disabled={loading} className="admin-btn-primary">
             {loading ? 'Saving...' : (isEditing ? 'Update Post' : 'Create Post')}
           </button>
-          <Link to="/admin/posts" className="btn-secondary">Cancel</Link>
+          <Link to="/admin/posts" className="admin-btn-secondary">Cancel</Link>
         </div>
       </form>
     </div>
