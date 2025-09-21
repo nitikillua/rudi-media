@@ -379,10 +379,152 @@ async def submit_contact_form(contact_data: ContactFormCreate, background_tasks:
         )
 
 @api_router.get("/contacts")
-async def get_contacts():
+async def get_contacts(current_admin: AdminUser = Depends(get_current_admin)):
     """Get all contacts (admin only)"""
     contacts = await db.contacts.find().sort("created_at", -1).to_list(100)
     return [ContactForm(**parse_from_mongo(contact)) for contact in contacts]
+
+# Admin Routes
+@api_router.post("/auth/login", response_model=Token)
+async def login_admin(admin_data: AdminLogin):
+    """Admin login"""
+    admin = await authenticate_admin(admin_data.username, admin_data.password)
+    if not admin:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": admin.username}, expires_delta=access_token_expires
+    )
+    return {"access_token": access_token, "token_type": "bearer"}
+
+@api_router.get("/auth/me")
+async def read_admin_me(current_admin: AdminUser = Depends(get_current_admin)):
+    """Get current admin info"""
+    return {"username": current_admin.username, "is_active": current_admin.is_active}
+
+@api_router.post("/admin/blog/posts", response_model=BlogPost)
+async def create_blog_post_admin(
+    post_data: BlogPostCreate, 
+    current_admin: AdminUser = Depends(get_current_admin)
+):
+    """Create new blog post (admin only)"""
+    slug = create_slug(post_data.title)
+    
+    # Check if slug already exists
+    existing_post = await db.blog_posts.find_one({"slug": slug})
+    if existing_post:
+        slug = f"{slug}-{str(uuid.uuid4())[:8]}"
+    
+    post_dict = post_data.dict()
+    post_dict["slug"] = slug
+    post_obj = BlogPost(**post_dict)
+    
+    mongo_data = prepare_for_mongo(post_obj.dict())
+    await db.blog_posts.insert_one(mongo_data)
+    
+    return post_obj
+
+@api_router.put("/admin/blog/posts/{post_id}", response_model=BlogPost)
+async def update_blog_post_admin(
+    post_id: str, 
+    post_data: BlogPostUpdate,
+    current_admin: AdminUser = Depends(get_current_admin)
+):
+    """Update blog post (admin only)"""
+    existing_post = await db.blog_posts.find_one({"id": post_id})
+    if not existing_post:
+        raise HTTPException(status_code=404, detail="Blog post nicht gefunden")
+    
+    update_data = {k: v for k, v in post_data.dict().items() if v is not None}
+    update_data["updated_at"] = datetime.now(timezone.utc).isoformat()
+    
+    # Update slug if title changed
+    if "title" in update_data:
+        new_slug = create_slug(update_data["title"])
+        # Check if new slug already exists
+        slug_exists = await db.blog_posts.find_one({"slug": new_slug, "id": {"$ne": post_id}})
+        if slug_exists:
+            new_slug = f"{new_slug}-{str(uuid.uuid4())[:8]}"
+        update_data["slug"] = new_slug
+    
+    await db.blog_posts.update_one({"id": post_id}, {"$set": update_data})
+    
+    updated_post = await db.blog_posts.find_one({"id": post_id})
+    return BlogPost(**parse_from_mongo(updated_post))
+
+@api_router.delete("/admin/blog/posts/{post_id}")
+async def delete_blog_post_admin(
+    post_id: str,
+    current_admin: AdminUser = Depends(get_current_admin)
+):
+    """Delete blog post (admin only)"""
+    result = await db.blog_posts.delete_one({"id": post_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Blog post nicht gefunden")
+    return {"message": "Blog post gelöscht"}
+
+@api_router.get("/admin/blog/posts", response_model=List[BlogPost])
+async def get_all_blog_posts_admin(current_admin: AdminUser = Depends(get_current_admin)):
+    """Get all blog posts including unpublished (admin only)"""
+    posts = await db.blog_posts.find().sort("created_at", -1).to_list(100)
+    return [BlogPost(**parse_from_mongo(post)) for post in posts]
+
+@api_router.post("/admin/upload/image", response_model=ImageUploadResponse)
+async def upload_image(
+    file: UploadFile = File(...),
+    current_admin: AdminUser = Depends(get_current_admin)
+):
+    """Upload image for blog posts (admin only)"""
+    # Validate file type
+    allowed_types = ["image/jpeg", "image/png", "image/gif", "image/webp"]
+    if file.content_type not in allowed_types:
+        raise HTTPException(
+            status_code=400, 
+            detail="Invalid file type. Only JPEG, PNG, GIF, and WebP are allowed."
+        )
+    
+    # Validate file size (max 5MB)
+    if file.size > 5 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="File too large. Maximum size is 5MB.")
+    
+    try:
+        # Read file content
+        content = await file.read()
+        
+        # Create unique filename
+        file_extension = file.filename.split('.')[-1].lower()
+        unique_filename = f"{str(uuid.uuid4())}.{file_extension}"
+        
+        # Convert to base64 for storage (in production, use cloud storage)
+        image_base64 = base64.b64encode(content).decode('utf-8')
+        image_url = f"data:{file.content_type};base64,{image_base64}"
+        
+        # Store image metadata in database
+        image_doc = {
+            "id": str(uuid.uuid4()),
+            "filename": unique_filename,
+            "original_filename": file.filename,
+            "content_type": file.content_type,
+            "size": file.size,
+            "url": image_url,
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        
+        await db.images.insert_one(image_doc)
+        
+        return ImageUploadResponse(
+            status="success",
+            url=image_url,
+            message="Image uploaded successfully"
+        )
+        
+    except Exception as e:
+        logging.error(f"Image upload error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Image upload failed")
 
 # Include router
 app.include_router(api_router)
