@@ -203,6 +203,51 @@ class EmailService:
 
 email_service = EmailService()
 
+# Authentication functions
+def verify_password(plain_password, hashed_password):
+    return pwd_context.verify(plain_password, hashed_password)
+
+def get_password_hash(password):
+    return pwd_context.hash(password)
+
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.now(timezone.utc) + expires_delta
+    else:
+        expire = datetime.now(timezone.utc) + timedelta(minutes=15)
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt
+
+async def get_current_admin(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        token = credentials.credentials
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str = payload.get("sub")
+        if username is None:
+            raise credentials_exception
+    except JWTError:
+        raise credentials_exception
+    
+    admin = await db.admin_users.find_one({"username": username})
+    if admin is None:
+        raise credentials_exception
+    return AdminUser(**admin)
+
+async def authenticate_admin(username: str, password: str):
+    admin = await db.admin_users.find_one({"username": username})
+    if not admin:
+        return False
+    if not verify_password(password, admin["hashed_password"]):
+        return False
+    return AdminUser(**admin)
+
 # Helper functions
 def create_slug(title: str) -> str:
     """Create URL-friendly slug from title"""
