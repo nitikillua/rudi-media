@@ -547,13 +547,26 @@ logger = logging.getLogger(__name__)
 
 @app.on_event("startup")
 async def startup_event():
-    """Initialize database with sample blog posts"""
+    """Initialize database with sample blog posts and admin user"""
     try:
+        # Create default admin user if it doesn't exist
+        existing_admin = await db.admin_users.find_one({"username": "admin"})
+        if not existing_admin:
+            admin_user = {
+                "id": str(uuid.uuid4()),
+                "username": "admin",
+                "hashed_password": get_password_hash("admin123"),  # Change this in production!
+                "is_active": True,
+                "created_at": datetime.now(timezone.utc).isoformat()
+            }
+            await db.admin_users.insert_one(admin_user)
+            logger.info("Default admin user created (username: admin, password: admin123)")
+        
         # Check if blog posts exist
         existing_posts = await db.blog_posts.count_documents({})
         
         if existing_posts == 0:
-            # Create sample blog posts
+            # Create sample blog posts with enhanced SEO fields
             sample_posts = [
                 {
                     "id": str(uuid.uuid4()),
@@ -580,7 +593,10 @@ async def startup_event():
                     "created_at": datetime.now(timezone.utc).isoformat(),
                     "updated_at": datetime.now(timezone.utc).isoformat(),
                     "published": True,
-                    "tags": ["Social Media", "Marketing", "Digital Marketing"]
+                    "tags": ["Social Media", "Marketing", "Digital Marketing"],
+                    "meta_description": "Warum Social Media Marketing unverzichtbar ist: Vorteile, Strategien und Tipps für erfolgreiches Social Media Marketing von Rudi-Media.",
+                    "meta_keywords": "Social Media Marketing, Facebook Marketing, Instagram Marketing, Online Marketing",
+                    "featured_image": None
                 },
                 {
                     "id": str(uuid.uuid4()),
@@ -621,7 +637,10 @@ async def startup_event():
                     "created_at": (datetime.now(timezone.utc) - timedelta(days=7)).isoformat(),
                     "updated_at": (datetime.now(timezone.utc) - timedelta(days=7)).isoformat(),
                     "published": True,
-                    "tags": ["Google Ads", "Meta Ads", "Online Werbung", "PPC"]
+                    "tags": ["Google Ads", "Meta Ads", "Online Werbung", "PPC"],
+                    "meta_description": "Google Ads vs Meta Ads Vergleich: Welche Werbeplattform ist die richtige für Ihr Unternehmen? Vorteile, Kosten und Strategien im Überblick.",
+                    "meta_keywords": "Google Ads, Meta Ads, Facebook Ads, Instagram Ads, Online Werbung, PPC",
+                    "featured_image": None
                 },
                 {
                     "id": str(uuid.uuid4()),
@@ -660,252 +679,11 @@ async def startup_event():
                     "created_at": (datetime.now(timezone.utc) - timedelta(days=14)).isoformat(),
                     "updated_at": (datetime.now(timezone.utc) - timedelta(days=14)).isoformat(),
                     "published": True,
-                    "tags": ["SEO", "Google", "Website Optimierung", "Trends 2025"]
-                },
-                # Neue Blog-Artikel
-                {
-                    "id": str(uuid.uuid4()),
-                    "title": "Die ultimative Social Media Content-Strategie für 2025",
-                    "content": """
-                    <p>Eine durchdachte Content-Strategie ist das Herzstück erfolgreichen Social Media Marketings. In diesem Artikel zeigen wir Ihnen, wie Sie Inhalte erstellen, die nicht nur gesehen, sondern auch geteilt und geliebt werden.</p>
-                    
-                    <h3>1. Zielgruppen-Analyse: Der Grundstein jeder Strategie</h3>
-                    <p>Bevor Sie den ersten Post erstellen, müssen Sie Ihre Zielgruppe in- und auswendig kennen:</p>
-                    <ul>
-                        <li><strong>Demografische Daten:</strong> Alter, Geschlecht, Standort, Einkommen</li>
-                        <li><strong>Psychografische Merkmale:</strong> Interessen, Werte, Lifestyle</li>
-                        <li><strong>Online-Verhalten:</strong> Welche Plattformen nutzen sie? Wann sind sie aktiv?</li>
-                        <li><strong>Pain Points:</strong> Welche Probleme haben sie, die Sie lösen können?</li>
-                    </ul>
-                    
-                    <h3>2. Content-Formate, die 2025 funktionieren</h3>
-                    <p><strong>Video-Content dominiert weiterhin:</strong></p>
-                    <ul>
-                        <li>Short-Form Videos (TikTok, Instagram Reels, YouTube Shorts)</li>
-                        <li>Live-Streaming für Authentizität</li>
-                        <li>Tutorials und How-to-Videos</li>
-                        <li>Behind-the-Scenes Content</li>
-                    </ul>
-                    
-                    <p><strong>Interaktive Inhalte gewinnen an Bedeutung:</strong></p>
-                    <ul>
-                        <li>Umfragen und Quizze</li>
-                        <li>AR-Filter und interaktive Stories</li>
-                        <li>User-Generated Content Kampagnen</li>
-                        <li>Live Q&A Sessions</li>
-                    </ul>
-                    
-                    <h3>3. Die 80/20-Regel für Social Media Content</h3>
-                    <p>80% Ihrer Inhalte sollten Mehrwert bieten (informieren, unterhalten, inspirieren), nur 20% sollten direkt verkaufsorientiert sein. Diese Aufteilung schafft Vertrauen und Engagement.</p>
-                    
-                    <h3>4. Content-Planung und Konsistenz</h3>
-                    <p>Erfolgreiche Social Media Präsenz erfordert Planung:</p>
-                    <ul>
-                        <li><strong>Content-Kalender:</strong> Planen Sie mindestens einen Monat im Voraus</li>
-                        <li><strong>Posting-Zeiten:</strong> Nutzen Sie Analytics, um optimale Zeiten zu identifizieren</li>
-                        <li><strong>Hashtag-Strategie:</strong> Mix aus branded, branchenspezifischen und trending Hashtags</li>
-                        <li><strong>Cross-Platform-Anpassung:</strong> Jede Plattform hat ihre eigenen Besonderheiten</li>
-                    </ul>
-                    
-                    <h3>5. Erfolgsmessung und Optimierung</h3>
-                    <p>KPIs, die wirklich zählen:</p>
-                    <ul>
-                        <li>Engagement Rate (Likes, Kommentare, Shares pro Follower)</li>
-                        <li>Reach und Impressions</li>
-                        <li>Website-Traffic aus Social Media</li>
-                        <li>Lead-Generierung und Conversions</li>
-                        <li>Brand Mention und Sentiment</li>
-                    </ul>
-                    
-                    <h3>Unser Ansatz bei Rudi-Media</h3>
-                    <p>Wir entwickeln für jeden Kunden eine individuelle Content-Strategie, die auf fundierten Daten basiert und kontinuierlich optimiert wird. Von der Ideenfindung über die Produktion bis hin zur Performance-Analyse – wir begleiten Sie auf dem gesamten Weg.</p>
-                    
-                    <p><strong>Bereit für eine Social Media Strategie, die wirklich funktioniert?</strong> Kontaktieren Sie uns für ein kostenloses Beratungsgespräch!</p>
-                    """,
-                    "excerpt": "Lernen Sie, wie Sie eine Social Media Content-Strategie entwickeln, die Engagement generiert und echte Geschäftsergebnisse liefert.",
-                    "author": "Arjanit Rudi",
-                    "slug": "social-media-content-strategie-2025",
-                    "created_at": (datetime.now(timezone.utc) - timedelta(days=3)).isoformat(),
-                    "updated_at": (datetime.now(timezone.utc) - timedelta(days=3)).isoformat(),
-                    "published": True,
-                    "tags": ["Social Media", "Content Marketing", "Strategie", "Digital Marketing"]
-                },
-                {
-                    "id": str(uuid.uuid4()),
-                    "title": "Google Ads Optimierung: 7 Strategien für maximalen ROI",
-                    "content": """
-                    <p>Google Ads kann ein mächtiges Werkzeug für Ihr Business sein – wenn es richtig eingesetzt wird. Viele Unternehmen verbrennen täglich Budgets mit schlecht optimierten Kampagnen. Hier sind 7 bewährte Strategien, um Ihren ROI zu maximieren.</p>
-                    
-                    <h3>1. Keyword-Recherche: Die Basis erfolgreicher Kampagnen</h3>
-                    <p>Erfolgreiche Google Ads Kampagnen beginnen mit der richtigen Keyword-Strategie:</p>
-                    <ul>
-                        <li><strong>Long-Tail Keywords:</strong> Weniger Konkurrenz, höhere Conversion-Rate</li>
-                        <li><strong>Negative Keywords:</strong> Vermeiden Sie irrelevante Klicks und sparen Sie Budget</li>
-                        <li><strong>Keyword-Match-Types:</strong> Nutzen Sie Broad Match Modifier für kontrollierte Reichweite</li>
-                        <li><strong>Suchvolumen vs. Intent:</strong> Fokus auf kaufbereite Nutzer</li>
-                    </ul>
-                    
-                    <h3>2. Anzeigengruppen-Struktur optimieren</h3>
-                    <p>Eine saubere Kontostruktur ist entscheidend:</p>
-                    <ul>
-                        <li>Maximal 10-20 Keywords pro Anzeigengruppe</li>
-                        <li>Thematisch eng verwandte Keywords gruppieren</li>
-                        <li>Separate Anzeigengruppen für verschiedene Match-Types</li>
-                        <li>Brand- und Non-Brand-Keywords trennen</li>
-                    </ul>
-                    
-                    <h3>3. Anzeigentexte, die konvertieren</h3>
-                    <p>Ihre Anzeigen müssen aus der Masse herausstechen:</p>
-                    <ul>
-                        <li><strong>Headline-Optimierung:</strong> Keyword in Headline 1, Nutzen in Headline 2</li>
-                        <li><strong>Unique Selling Proposition:</strong> Was macht Sie besser als die Konkurrenz?</li>
-                        <li><strong>Call-to-Action:</strong> Klare Handlungsaufforderung</li>
-                        <li><strong>Ad Extensions:</strong> Nutzen Sie alle verfügbaren Erweiterungen</li>
-                    </ul>
-                    
-                    <h3>4. Landing Page Optimierung</h3>
-                    <p>Der Klick ist nur der Anfang – die Landing Page muss überzeugen:</p>
-                    <ul>
-                        <li><strong>Message Match:</strong> Anzeige und Landing Page müssen harmonieren</li>
-                        <li><strong>Ladegeschwindigkeit:</strong> Unter 3 Sekunden ist Pflicht</li>
-                        <li><strong>Mobile Optimierung:</strong> Über 60% der Klicks kommen von mobilen Geräten</li>
-                        <li><strong>Conversion-Elemente:</strong> Formulare und CTAs prominent platzieren</li>
-                    </ul>
-                    
-                    <h3>5. Gebotsstrategien intelligent einsetzen</h3>
-                    <p>Die richtige Gebotsstrategie kann Ihren ROI verdoppeln:</p>
-                    <ul>
-                        <li><strong>Target CPA:</strong> Für stabile Conversion-Kosten</li>
-                        <li><strong>Target ROAS:</strong> Für E-Commerce mit unterschiedlichen Warenkörben</li>
-                        <li><strong>Maximize Conversions:</strong> Für neue Kampagnen mit ausreichend Daten</li>
-                        <li><strong>Manual CPC:</strong> Für maximale Kontrolle bei kleinen Budgets</li>
-                    </ul>
-                    
-                    <h3>6. Demografisches und geografisches Targeting</h3>
-                    <p>Fokussieren Sie auf Ihre wertvollsten Zielgruppen:</p>
-                    <ul>
-                        <li>Analyse der besten Zielgruppen nach Alter und Geschlecht</li>
-                        <li>Geografische Leistung bewerten und Budget entsprechend verteilen</li>
-                        <li>Dayparting: Anzeigen zu optimalen Zeiten schalten</li>
-                        <li>Device-Performance: Mobile vs. Desktop Performance analysieren</li>
-                    </ul>
-                    
-                    <h3>7. Kontinuierliches Monitoring und Optimierung</h3>
-                    <p>Google Ads ist ein kontinuierlicher Prozess:</p>
-                    <ul>
-                        <li><strong>Wöchentliche Leistungsanalyse:</strong> KPIs im Blick behalten</li>
-                        <li><strong>A/B-Tests:</strong> Anzeigen und Landing Pages kontinuierlich testen</li>
-                        <li><strong>Competitor Analysis:</strong> Marktveränderungen rechtzeitig erkennen</li>
-                        <li><strong>Budget-Umverteilung:</strong> Erfolgreiche Kampagnen stärken</li>
-                    </ul>
-                    
-                    <h3>Unser Google Ads Management bei Rudi-Media</h3>
-                    <p>Wir betreuen Google Ads Kampagnen mit einem datengetriebenen Ansatz. Unsere zertifizierten Google Ads Experten optimieren kontinuierlich für maximale Performance und transparente Ergebnisse.</p>
-                    
-                    <p><strong>Professionelle Google Ads Betreuung benötigt?</strong> Lassen Sie uns Ihre Kampagnen analysieren und Optimierungspotentiale aufzeigen!</p>
-                    """,
-                    "excerpt": "Maximieren Sie Ihren Google Ads ROI mit diesen 7 bewährten Optimierungsstrategien von unseren PPC-Experten.",
-                    "author": "Arjanit Rudi",
-                    "slug": "google-ads-optimierung-strategien",
-                    "created_at": (datetime.now(timezone.utc) - timedelta(days=1)).isoformat(),
-                    "updated_at": (datetime.now(timezone.utc) - timedelta(days=1)).isoformat(),
-                    "published": True,
-                    "tags": ["Google Ads", "PPC", "Online Marketing", "ROI Optimierung"]
-                },
-                {
-                    "id": str(uuid.uuid4()),
-                    "title": "Local SEO: Wie Sie in lokalen Suchergebnissen dominieren",
-                    "content": """
-                    <p>88% der Verbraucher, die eine lokale Suche auf ihrem Smartphone durchführen, besuchen oder rufen ein Geschäft innerhalb eines Tages an. Local SEO ist daher essentiell für jedes lokale Unternehmen.</p>
-                    
-                    <h3>1. Google My Business optimieren</h3>
-                    <p>Ihr Google My Business Profil ist Ihr wichtigstes Local SEO Asset:</p>
-                    <ul>
-                        <li><strong>Vollständige Informationen:</strong> Name, Adresse, Telefonnummer, Öffnungszeiten</li>
-                        <li><strong>Hochwertige Fotos:</strong> Außenansicht, Innenbereich, Team, Produkte</li>
-                        <li><strong>Regelmäßige Posts:</strong> Updates, Angebote, Events</li>
-                        <li><strong>Q&A Bereich:</strong> Häufige Fragen proaktiv beantworten</li>
-                        <li><strong>Attribute nutzen:</strong> Alle relevanten Geschäftsattribute auswählen</li>
-                    </ul>
-                    
-                    <h3>2. NAP-Konsistenz sicherstellen</h3>
-                    <p>Name, Adresse und Telefonnummer (NAP) müssen überall identisch sein:</p>
-                    <ul>
-                        <li>Website und alle Unterseiten</li>
-                        <li>Google My Business</li>
-                        <li>Branchenverzeichnisse</li>
-                        <li>Social Media Profile</li>
-                        <li>Online-Bewertungsplattformen</li>
-                    </ul>
-                    
-                    <h3>3. Lokale Keywords strategisch nutzen</h3>
-                    <p>Integrieren Sie lokale Suchbegriffe natürlich in Ihre Inhalte:</p>
-                    <ul>
-                        <li><strong>Stadt + Dienstleistung:</strong> "SEO Agentur München"</li>
-                        <li><strong>Stadtteil-spezifisch:</strong> "Webdesign Schwabing"</li>
-                        <li><strong>"In der Nähe" Begriffe:</strong> "Marketing Agentur in meiner Nähe"</li>
-                        <li><strong>Lokale Landmarken:</strong> "Nahe Marienplatz"</li>
-                    </ul>
-                    
-                    <h3>4. Online-Bewertungen managen</h3>
-                    <p>Bewertungen sind ein entscheidender Ranking-Faktor:</p>
-                    <ul>
-                        <li><strong>Proaktiv um Bewertungen bitten:</strong> Zufriedene Kunden ansprechen</li>
-                        <li><strong>Schnell auf Bewertungen antworten:</strong> Sowohl positive als auch negative</li>
-                        <li><strong>Bewertungsvielfalt:</strong> Google, Facebook, branchenspezifische Plattformen</li>
-                        <li><strong>Bewertungen einbetten:</strong> Positive Reviews auf der Website zeigen</li>
-                    </ul>
-                    
-                    <h3>5. Lokale Inhalte erstellen</h3>
-                    <p>Content mit lokalem Bezug stärkt Ihre Relevanz:</p>
-                    <ul>
-                        <li>Blog-Artikel über lokale Events und Trends</li>
-                        <li>Kooperationen mit anderen lokalen Unternehmen</li>
-                        <li>Lokale Fallstudien und Erfolgsgeschichten</li>
-                        <li>Community-Engagement dokumentieren</li>
-                    </ul>
-                    
-                    <h3>6. Strukturierte Daten implementieren</h3>
-                    <p>Schema Markup hilft Suchmaschinen, Ihr Unternehmen zu verstehen:</p>
-                    <ul>
-                        <li><strong>LocalBusiness Schema:</strong> Grundlegende Unternehmensdaten</li>
-                        <li><strong>Review Schema:</strong> Bewertungen in Suchergebnissen anzeigen</li>
-                        <li><strong>Opening Hours:</strong> Öffnungszeiten strukturiert auszeichnen</li>
-                        <li><strong>FAQ Schema:</strong> Häufige Fragen direkt in den SERPs</li>
-                    </ul>
-                    
-                    <h3>7. Mobile Optimierung priorisieren</h3>
-                    <p>Lokale Suchen finden zu 80% auf mobilen Geräten statt:</p>
-                    <ul>
-                        <li>Schnelle Ladezeiten (unter 3 Sekunden)</li>
-                        <li>Thumb-freundliche Navigation</li>
-                        <li>Click-to-Call Buttons prominent platzieren</li>
-                        <li>Standort-basierte Funktionen nutzen</li>
-                    </ul>
-                    
-                    <h3>8. Local Citations aufbauen</h3>
-                    <p>Erwähnungen Ihres Unternehmens in Online-Verzeichnissen:</p>
-                    <ul>
-                        <li><strong>Branchenverzeichnisse:</strong> Gelbe Seiten, Das Örtliche, 11880</li>
-                        <li><strong>Bewertungsplattformen:</strong> Yelp, TripAdvisor, Qype</li>
-                        <li><strong>Branchenspezifische Portale:</strong> Je nach Geschäftsfeld</li>
-                        <li><strong>Lokale Websites:</strong> Stadtportale, Handelskammern</li>
-                    </ul>
-                    
-                    <h3>Unser Local SEO Service bei Rudi-Media</h3>
-                    <p>Wir helfen lokalen Unternehmen dabei, in den lokalen Suchergebnissen sichtbarer zu werden. Von der Google My Business Optimierung bis zur umfassenden Local SEO Strategie.</p>
-                    
-                    <p><strong>Möchten Sie lokal besser gefunden werden?</strong> Lassen Sie uns Ihre aktuelle Local SEO Performance analysieren!</p>
-                    """,
-                    "excerpt": "Dominieren Sie die lokalen Suchergebnisse mit unserer umfassenden Local SEO Anleitung für mehr Sichtbarkeit und Kunden.",
-                    "author": "Arjanit Rudi",
-                    "slug": "local-seo-strategien-lokale-suche",
-                    "created_at": (datetime.now(timezone.utc) - timedelta(hours=12)).isoformat(),
-                    "updated_at": (datetime.now(timezone.utc) - timedelta(hours=12)).isoformat(),
-                    "published": True,
-                    "tags": ["Local SEO", "Google My Business", "Lokale Suche", "SEO"]
-                }
-            ]
+                    "tags": ["SEO", "Google", "Website Optimierung", "Trends 2025"],
+                    "meta_description": "SEO Trends 2025: Die wichtigsten Suchmaschinenoptimierung Trends für 2025 - Core Web Vitals, E-A-T, Local SEO und Voice Search Optimierung.",
+                    "meta_keywords": "SEO Trends 2025, Suchmaschinenoptimierung, Google SEO, Local SEO, Voice Search",
+                    "featured_image": None
+                }]
             
             # Insert sample posts
             await db.blog_posts.insert_many(sample_posts)
