@@ -280,7 +280,7 @@ class RudiMediaAPITester:
             "Admin Me - Unauthorized",
             "GET",
             "auth/me",
-            401
+            403  # FastAPI returns 403 for missing auth
         )
 
     # ===== ADMIN BLOG POST TESTS =====
