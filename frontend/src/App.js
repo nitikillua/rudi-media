@@ -1123,7 +1123,303 @@ const AdminBlogPosts = () => {
   );
 };
 
-const AdminLogin = () => {
+const AdminBlogEditor = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const [post, setPost] = useState({
+    title: '',
+    content: '',
+    excerpt: '',
+    tags: [],
+    published: true,
+    meta_description: '',
+    meta_keywords: '',
+    featured_image: null
+  });
+  const [loading, setLoading] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [postId, setPostId] = useState(null);
+  const [tagInput, setTagInput] = useState('');
+  const [imageUploading, setImageUploading] = useState(false);
+
+  // Rich text editor configuration
+  const quillModules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      ['link', 'image', 'video'],
+      [{ 'align': [] }],
+      ['clean']
+    ],
+  };
+
+  useEffect(() => {
+    // Check if editing an existing post
+    const path = window.location.pathname;
+    const editMatch = path.match(/\/admin\/posts\/edit\/(.+)/);
+    
+    if (editMatch) {
+      setIsEditing(true);
+      setPostId(editMatch[1]);
+      fetchPost(editMatch[1]);
+    }
+  }, []);
+
+  const fetchPost = async (id) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${API}/blog/posts/${id}`);
+      if (response.ok) {
+        const data = await response.json();
+        setPost({
+          title: data.title,
+          content: data.content,
+          excerpt: data.excerpt,
+          tags: data.tags || [],
+          published: data.published,
+          meta_description: data.meta_description || '',
+          meta_keywords: data.meta_keywords || '',
+          featured_image: data.featured_image
+        });
+      }
+    } catch (error) {
+      console.error('Failed to fetch post:', error);
+    }
+    setLoading(false);
+  };
+
+  const handleImageUpload = async (file) => {
+    if (!file) return;
+
+    setImageUploading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch(`${API}/admin/upload/image`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        },
+        body: formData
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setPost(prev => ({ ...prev, featured_image: data.url }));
+      } else {
+        alert('Image upload failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Image upload error:', error);
+      alert('Image upload failed. Please try again.');
+    }
+    setImageUploading(false);
+  };
+
+  const addTag = () => {
+    if (tagInput.trim() && !post.tags.includes(tagInput.trim())) {
+      setPost(prev => ({
+        ...prev,
+        tags: [...prev.tags, tagInput.trim()]
+      }));
+      setTagInput('');
+    }
+  };
+
+  const removeTag = (tagToRemove) => {
+    setPost(prev => ({
+      ...prev,
+      tags: prev.tags.filter(tag => tag !== tagToRemove)
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const url = isEditing 
+        ? `${API}/admin/blog/posts/${postId}`
+        : `${API}/admin/blog/posts`;
+      
+      const method = isEditing ? 'PUT' : 'POST';
+
+      const response = await fetch(url, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
+        },
+        body: JSON.stringify(post)
+      });
+
+      if (response.ok) {
+        navigate('/admin/posts');
+      } else {
+        alert('Failed to save post. Please try again.');
+      }
+    } catch (error) {
+      console.error('Failed to save post:', error);
+      alert('Failed to save post. Please try again.');
+    }
+    setLoading(false);
+  };
+
+  if (loading && isEditing) {
+    return <div className="admin-loading">Loading post...</div>;
+  }
+
+  return (
+    <div className="admin-blog-editor">
+      <div className="admin-header">
+        <h1>{isEditing ? 'Edit Blog Post' : 'Create New Blog Post'}</h1>
+        <Link to="/admin/posts" className="btn-secondary">Back to Posts</Link>
+      </div>
+
+      <form onSubmit={handleSubmit} className="blog-editor-form">
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="title">Title *</label>
+            <input
+              type="text"
+              id="title"
+              value={post.title}
+              onChange={(e) => setPost(prev => ({ ...prev, title: e.target.value }))}
+              required
+              disabled={loading}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="published">Status</label>
+            <select
+              id="published"
+              value={post.published}
+              onChange={(e) => setPost(prev => ({ ...prev, published: e.target.value === 'true' }))}
+              disabled={loading}
+            >
+              <option value="true">Published</option>
+              <option value="false">Draft</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="excerpt">Excerpt *</label>
+          <textarea
+            id="excerpt"
+            value={post.excerpt}
+            onChange={(e) => setPost(prev => ({ ...prev, excerpt: e.target.value }))}
+            rows="3"
+            required
+            disabled={loading}
+            placeholder="Short description of the post..."
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Content *</label>
+          <ReactQuill
+            value={post.content}
+            onChange={(content) => setPost(prev => ({ ...prev, content }))}
+            modules={quillModules}
+            theme="snow"
+            placeholder="Write your blog post content here..."
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="featured_image">Featured Image</label>
+          <div className="image-upload-section">
+            {post.featured_image && (
+              <div className="current-image">
+                <img src={post.featured_image} alt="Featured" style={{ maxWidth: '200px', maxHeight: '150px' }} />
+                <button 
+                  type="button" 
+                  onClick={() => setPost(prev => ({ ...prev, featured_image: null }))}
+                  className="remove-image-btn"
+                >
+                  Remove
+                </button>
+              </div>
+            )}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => handleImageUpload(e.target.files[0])}
+              disabled={imageUploading || loading}
+            />
+            {imageUploading && <p>Uploading image...</p>}
+          </div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="tags">Tags</label>
+          <div className="tags-input">
+            <div className="current-tags">
+              {post.tags.map(tag => (
+                <span key={tag} className="tag">
+                  {tag}
+                  <button type="button" onClick={() => removeTag(tag)}>×</button>
+                </span>
+              ))}
+            </div>
+            <div className="add-tag">
+              <input
+                type="text"
+                value={tagInput}
+                onChange={(e) => setTagInput(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())}
+                placeholder="Add a tag..."
+                disabled={loading}
+              />
+              <button type="button" onClick={addTag} disabled={loading}>Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div className="seo-section">
+          <h3>SEO Settings</h3>
+          
+          <div className="form-group">
+            <label htmlFor="meta_description">Meta Description</label>
+            <textarea
+              id="meta_description"
+              value={post.meta_description}
+              onChange={(e) => setPost(prev => ({ ...prev, meta_description: e.target.value }))}
+              rows="2"
+              maxLength="160"
+              disabled={loading}
+              placeholder="Brief description for search engines (max 160 characters)..."
+            />
+            <small>{post.meta_description.length}/160 characters</small>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="meta_keywords">Meta Keywords</label>
+            <input
+              type="text"
+              id="meta_keywords"
+              value={post.meta_keywords}
+              onChange={(e) => setPost(prev => ({ ...prev, meta_keywords: e.target.value }))}
+              disabled={loading}
+              placeholder="Comma-separated keywords for SEO..."
+            />
+          </div>
+        </div>
+
+        <div className="form-actions">
+          <button type="submit" disabled={loading} className="btn-primary">
+            {loading ? 'Saving...' : (isEditing ? 'Update Post' : 'Create Post')}
+          </button>
+          <Link to="/admin/posts" className="btn-secondary">Cancel</Link>
+        </div>
+      </form>
+    </div>
+  );
+};
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
