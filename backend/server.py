@@ -94,6 +94,27 @@ class ContactFormResponse(BaseModel):
     status: str
     message: str
 
+# Admin Models
+class AdminUser(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    username: str
+    hashed_password: str
+    is_active: bool = True
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class AdminLogin(BaseModel):
+    username: str
+    password: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class ImageUploadResponse(BaseModel):
+    status: str
+    url: str
+    message: str
+
 # Email Service
 class EmailService:
     def __init__(self):
