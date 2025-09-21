@@ -1113,7 +1113,7 @@ const AdminBlogPosts = () => {
               </div>
             </div>
             <div className="post-actions">
-              <Link to={`/admin/posts/edit/${post.id}`} className="btn-secondary">Edit</Link>
+              <Link to={`/admin/posts/edit/${post.id}`} className="admin-btn-secondary">Edit</Link>
               <button onClick={() => deletePost(post.id)} className="btn-danger">Delete</button>
             </div>
           </div>
