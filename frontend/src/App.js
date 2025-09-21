@@ -651,29 +651,34 @@ const ContactForm = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch(`${API}/contact`, {
+      // Formspree submission
+      const response = await fetch('https://formspree.io/f/xkgqwjkj', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          _subject: `Neue Kontaktanfrage von ${formData.name} - Rudi-Media Website`
+        })
       });
-
-      const result = await response.json();
 
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: result.message
+          message: 'Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglich bei Ihnen.'
         });
         setFormData({ name: '', email: '', phone: '', message: '' });
       } else {
-        throw new Error(result.detail || 'Fehler beim Senden');
+        throw new Error('Fehler beim Senden');
       }
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.'
+        message: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.'
       });
     } finally {
       setIsSubmitting(false);
