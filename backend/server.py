@@ -51,6 +51,10 @@ class BlogPost(BaseModel):
     published: bool = True
     tags: List[str] = []
     slug: str
+    # SEO Fields
+    meta_description: Optional[str] = None
+    meta_keywords: Optional[str] = None
+    featured_image: Optional[str] = None
 
 class BlogPostCreate(BaseModel):
     title: str
@@ -58,6 +62,9 @@ class BlogPostCreate(BaseModel):
     excerpt: str
     tags: List[str] = []
     published: bool = True
+    meta_description: Optional[str] = None
+    meta_keywords: Optional[str] = None
+    featured_image: Optional[str] = None
 
 class BlogPostUpdate(BaseModel):
     title: Optional[str] = None
@@ -65,6 +72,9 @@ class BlogPostUpdate(BaseModel):
     excerpt: Optional[str] = None
     tags: Optional[List[str]] = None
     published: Optional[bool] = None
+    meta_description: Optional[str] = None
+    meta_keywords: Optional[str] = None
+    featured_image: Optional[str] = None
 
 class ContactForm(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
