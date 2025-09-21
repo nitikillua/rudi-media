@@ -651,7 +651,7 @@ const ContactForm = () => {
     setSubmitStatus(null);
 
     try {
-      // Formspree submission
+      // Formspree submission with auto-reply
       const response = await fetch('https://formspree.io/f/xkgqwjkj', {
         method: 'POST',
         headers: {
@@ -662,7 +662,33 @@ const ContactForm = () => {
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
-          _subject: `Neue Kontaktanfrage von ${formData.name} - Rudi-Media Website`
+          _subject: `Neue Kontaktanfrage von ${formData.name} - Rudi-Media Website`,
+          _replyto: formData.email,
+          _autoresponse: `Hallo ${formData.name},
+
+vielen Dank für Ihr Interesse an Rudi-Media und Ihre Kontaktaufnahme über unsere Website!
+
+Wir haben Ihre Nachricht erhalten und werden uns schnellstmöglich bei Ihnen melden. In der Regel antworten wir innerhalb von 24 Stunden.
+
+Ihre Nachricht:
+"${formData.message}"
+
+In der Zwischenzeit können Sie uns auch gerne direkt über WhatsApp kontaktieren:
+📱 +49 1522 2539425
+
+Oder besuchen Sie unseren Blog für weitere Informationen über Digital Marketing:
+🌐 https://rudi-media.de/blog
+
+Mit freundlichen Grüßen
+Arjanit Rudi
+Rudi-Media
+
+---
+Kampenwandstr. 2
+85586 Poing
+Tel: +49 1522 2539425
+E-Mail: info@rudi-media.de
+Web: rudi-media.de`
         })
       });
 
