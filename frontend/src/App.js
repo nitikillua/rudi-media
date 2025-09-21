@@ -1823,20 +1823,20 @@ const BlogPost = () => {
       id: "1",
       title: "Warum Social Media Marketing für Ihr Unternehmen unverzichtbar ist",
       content: `
-        <p>In der heutigen digitalen Welt ist Social Media Marketing nicht mehr nur eine Option – es ist eine Notwendigkeit für jedes Unternehmen, das erfolgreich sein möchte.</p>
-        
-        <h3>Die Macht der sozialen Medien</h3>
-        <p>Mit über 4,8 Milliarden aktiven Social Media Nutzern weltweit bieten Plattformen wie Facebook, Instagram, LinkedIn und TikTok eine unglaubliche Reichweite für Ihr Unternehmen.</p>
-        
-        <h3>Vorteile von professionellem Social Media Marketing:</h3>
-        <ul>
-            <li><strong>Erhöhte Markenbekanntheit:</strong> Regelmäßige, hochwertige Inhalte steigern die Sichtbarkeit Ihrer Marke</li>
-            <li><strong>Direkter Kundenkontakt:</strong> Interaktion und Engagement mit Ihrer Zielgruppe in Echtzeit</li>
-            <li><strong>Kostengünstige Werbung:</strong> Gezieltes Targeting zu einem Bruchteil traditioneller Werbekosten</li>
-            <li><strong>Messbare Ergebnisse:</strong> Detaillierte Analytics für kontinuierliche Optimierung</li>
-        </ul>
-        
-        <p>Bei Rudi-Media entwickeln wir maßgeschneiderte Social Media Strategien, die Ihre Unternehmensziele unterstützen und messbare Ergebnisse liefern.</p>
+In der heutigen digitalen Welt ist Social Media Marketing nicht mehr nur eine Option – es ist eine Notwendigkeit für jedes Unternehmen, das erfolgreich sein möchte.
+
+### Die Macht der sozialen Medien
+
+Mit über 4,8 Milliarden aktiven Social Media Nutzern weltweit bieten Plattformen wie Facebook, Instagram, LinkedIn und TikTok eine unglaubliche Reichweite für Ihr Unternehmen.
+
+### Vorteile von professionellem Social Media Marketing:
+
+- **Erhöhte Markenbekanntheit:** Regelmäßige, hochwertige Inhalte steigern die Sichtbarkeit Ihrer Marke
+- **Direkter Kundenkontakt:** Interaktion und Engagement mit Ihrer Zielgruppe in Echtzeit
+- **Kostengünstige Werbung:** Gezieltes Targeting zu einem Bruchteil traditioneller Werbekosten
+- **Messbare Ergebnisse:** Detaillierte Analytics für kontinuierliche Optimierung
+
+Bei Rudi-Media entwickeln wir maßgeschneiderte Social Media Strategien, die Ihre Unternehmensziele unterstützen und messbare Ergebnisse liefern.
       `,
       excerpt: "Entdecken Sie, warum Social Media Marketing für Ihr Unternehmen unverzichtbar ist und wie es Ihnen helfen kann, Ihre Ziele zu erreichen.",
       author: "Arjanit Rudi",
