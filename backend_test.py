@@ -217,6 +217,317 @@ class RudiMediaAPITester:
             422  # Validation error
         )
 
+    # ===== ADMIN AUTHENTICATION TESTS =====
+    
+    def test_admin_login(self):
+        """Test admin login with credentials admin/admin123"""
+        login_data = {
+            "username": "admin",
+            "password": "admin123"
+        }
+        
+        def check_login_response(data):
+            if "access_token" not in data or "token_type" not in data:
+                print("   Missing access_token or token_type in response")
+                return False
+            
+            # Store token for subsequent tests
+            self.admin_token = data["access_token"]
+            print(f"   Token received: {self.admin_token[:20]}...")
+            return data["token_type"] == "bearer"
+            
+        return self.run_test(
+            "Admin Login",
+            "POST",
+            "auth/login",
+            200,
+            data=login_data,
+            check_response=check_login_response
+        )
+
+    def test_admin_login_invalid_credentials(self):
+        """Test admin login with invalid credentials"""
+        invalid_login_data = {
+            "username": "admin",
+            "password": "wrongpassword"
+        }
+        
+        return self.run_test(
+            "Admin Login - Invalid Credentials",
+            "POST",
+            "auth/login",
+            401,
+            data=invalid_login_data
+        )
+
+    def test_admin_me(self):
+        """Test getting current admin info"""
+        def check_admin_me_response(data):
+            return "username" in data and "is_active" in data and data["username"] == "admin"
+            
+        return self.run_test(
+            "Admin Me",
+            "GET",
+            "auth/me",
+            200,
+            use_auth=True,
+            check_response=check_admin_me_response
+        )
+
+    def test_admin_me_unauthorized(self):
+        """Test admin/me without authentication"""
+        return self.run_test(
+            "Admin Me - Unauthorized",
+            "GET",
+            "auth/me",
+            401
+        )
+
+    # ===== ADMIN BLOG POST TESTS =====
+    
+    def test_admin_blog_posts_list(self):
+        """Test getting all blog posts (admin only - includes unpublished)"""
+        def check_admin_posts_response(data):
+            if not isinstance(data, list):
+                print(f"   Expected list, got {type(data)}")
+                return False
+            
+            print(f"   Found {len(data)} blog posts (admin view)")
+            
+            # Check if posts have SEO fields
+            if len(data) > 0:
+                post = data[0]
+                seo_fields = ['meta_description', 'meta_keywords', 'featured_image']
+                for field in seo_fields:
+                    if field not in post:
+                        print(f"   Missing SEO field: {field}")
+                        return False
+                print("   ✅ SEO fields present in blog posts")
+            
+            return True
+            
+        return self.run_test(
+            "Admin Blog Posts List",
+            "GET",
+            "admin/blog/posts",
+            200,
+            use_auth=True,
+            check_response=check_admin_posts_response
+        )
+
+    def test_admin_blog_posts_unauthorized(self):
+        """Test admin blog posts without authentication"""
+        return self.run_test(
+            "Admin Blog Posts - Unauthorized",
+            "GET",
+            "admin/blog/posts",
+            401
+        )
+
+    def test_create_blog_post_admin(self):
+        """Test creating a blog post with SEO fields via admin endpoint"""
+        blog_post_data = {
+            "title": "Test Blog Post mit SEO Feldern",
+            "content": "<p>Dies ist ein Test-Blog-Post mit erweiterten SEO-Funktionen.</p><h3>Wichtige Punkte:</h3><ul><li>SEO-optimiert</li><li>Meta-Beschreibung</li><li>Keywords</li></ul>",
+            "excerpt": "Ein Test-Blog-Post um die neuen SEO-Funktionen zu testen.",
+            "tags": ["Test", "SEO", "Blog"],
+            "published": True,
+            "meta_description": "Test Blog Post mit SEO Feldern - Meta Description für bessere Suchmaschinenoptimierung",
+            "meta_keywords": "Test, SEO, Blog, Meta Keywords, Suchmaschinenoptimierung",
+            "featured_image": None
+        }
+        
+        def check_create_response(data):
+            required_fields = ['id', 'title', 'content', 'excerpt', 'slug', 'meta_description', 'meta_keywords', 'featured_image']
+            for field in required_fields:
+                if field not in data:
+                    print(f"   Missing field in response: {field}")
+                    return False
+            
+            # Store the created post ID for cleanup
+            self.created_post_id = data['id']
+            print(f"   Created post ID: {self.created_post_id}")
+            print(f"   Post slug: {data['slug']}")
+            print(f"   Meta description: {data['meta_description'][:50]}...")
+            
+            return data['title'] == blog_post_data['title']
+            
+        return self.run_test(
+            "Create Blog Post (Admin)",
+            "POST",
+            "admin/blog/posts",
+            200,
+            data=blog_post_data,
+            use_auth=True,
+            check_response=check_create_response
+        )
+
+    def test_create_blog_post_unauthorized(self):
+        """Test creating blog post without authentication"""
+        blog_post_data = {
+            "title": "Unauthorized Test Post",
+            "content": "This should fail",
+            "excerpt": "Should not work"
+        }
+        
+        return self.run_test(
+            "Create Blog Post - Unauthorized",
+            "POST",
+            "admin/blog/posts",
+            401,
+            data=blog_post_data
+        )
+
+    def test_update_blog_post_admin(self):
+        """Test updating a blog post via admin endpoint"""
+        if not hasattr(self, 'created_post_id'):
+            print("   Skipping - no post ID available")
+            return False, {}
+            
+        update_data = {
+            "title": "Updated Test Blog Post mit SEO",
+            "meta_description": "Updated meta description for better SEO",
+            "meta_keywords": "Updated, Keywords, SEO, Test"
+        }
+        
+        def check_update_response(data):
+            return (data['title'] == update_data['title'] and 
+                   data['meta_description'] == update_data['meta_description'])
+            
+        return self.run_test(
+            "Update Blog Post (Admin)",
+            "PUT",
+            f"admin/blog/posts/{self.created_post_id}",
+            200,
+            data=update_data,
+            use_auth=True,
+            check_response=check_update_response
+        )
+
+    def test_delete_blog_post_admin(self):
+        """Test deleting a blog post via admin endpoint"""
+        if not hasattr(self, 'created_post_id'):
+            print("   Skipping - no post ID available")
+            return False, {}
+            
+        def check_delete_response(data):
+            return "message" in data
+            
+        return self.run_test(
+            "Delete Blog Post (Admin)",
+            "DELETE",
+            f"admin/blog/posts/{self.created_post_id}",
+            200,
+            use_auth=True,
+            check_response=check_delete_response
+        )
+
+    # ===== IMAGE UPLOAD TESTS =====
+    
+    def test_image_upload_admin(self):
+        """Test image upload functionality"""
+        # Create a simple test image (1x1 pixel PNG)
+        test_image_data = base64.b64decode(
+            'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=='
+        )
+        
+        files = {
+            'file': ('test_image.png', io.BytesIO(test_image_data), 'image/png')
+        }
+        
+        def check_upload_response(data):
+            required_fields = ['status', 'url', 'message']
+            for field in required_fields:
+                if field not in data:
+                    print(f"   Missing field in response: {field}")
+                    return False
+            
+            if data['status'] != 'success':
+                print(f"   Upload status not success: {data['status']}")
+                return False
+                
+            if not data['url'].startswith('data:image/png;base64,'):
+                print(f"   Invalid image URL format: {data['url'][:50]}...")
+                return False
+                
+            print(f"   Image uploaded successfully")
+            print(f"   URL length: {len(data['url'])} characters")
+            
+            return True
+            
+        return self.run_test(
+            "Image Upload (Admin)",
+            "POST",
+            "admin/upload/image",
+            200,
+            files=files,
+            use_auth=True,
+            check_response=check_upload_response
+        )
+
+    def test_image_upload_unauthorized(self):
+        """Test image upload without authentication"""
+        test_image_data = base64.b64decode(
+            'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=='
+        )
+        
+        files = {
+            'file': ('test_image.png', io.BytesIO(test_image_data), 'image/png')
+        }
+        
+        return self.run_test(
+            "Image Upload - Unauthorized",
+            "POST",
+            "admin/upload/image",
+            401,
+            files=files
+        )
+
+    def test_image_upload_invalid_file_type(self):
+        """Test image upload with invalid file type"""
+        files = {
+            'file': ('test.txt', io.BytesIO(b'This is not an image'), 'text/plain')
+        }
+        
+        return self.run_test(
+            "Image Upload - Invalid File Type",
+            "POST",
+            "admin/upload/image",
+            400,
+            files=files,
+            use_auth=True
+        )
+
+    # ===== CONTACTS ADMIN TESTS =====
+    
+    def test_admin_contacts_list(self):
+        """Test getting all contacts (admin only)"""
+        def check_contacts_response(data):
+            if not isinstance(data, list):
+                print(f"   Expected list, got {type(data)}")
+                return False
+            
+            print(f"   Found {len(data)} contact submissions")
+            return True
+            
+        return self.run_test(
+            "Admin Contacts List",
+            "GET",
+            "contacts",
+            200,
+            use_auth=True,
+            check_response=check_contacts_response
+        )
+
+    def test_admin_contacts_unauthorized(self):
+        """Test contacts endpoint without authentication"""
+        return self.run_test(
+            "Admin Contacts - Unauthorized",
+            "GET",
+            "contacts",
+            401
+        )
+
 def main():
     print("🚀 Starting Rudi-Media API Tests")
     print("=" * 50)
