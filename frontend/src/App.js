@@ -1308,11 +1308,11 @@ const AdminBlogEditor = () => {
 
         <div className="form-group">
           <label>Content *</label>
-          <ReactQuill
+          <MDEditor
             value={post.content}
-            onChange={(content) => setPost(prev => ({ ...prev, content }))}
-            modules={quillModules}
-            theme="snow"
+            onChange={(val) => setPost(prev => ({ ...prev, content: val || '' }))}
+            data-color-mode="light"
+            height={400}
             placeholder="Write your blog post content here..."
           />
         </div>
