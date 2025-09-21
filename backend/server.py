@@ -110,6 +110,14 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
+class AdminPasswordUpdate(BaseModel):
+    current_password: str
+    new_password: str
+
+class AdminUsernameUpdate(BaseModel):
+    new_username: str
+    password: str  # Current password for verification
+
 class ImageUploadResponse(BaseModel):
     status: str
     url: str
