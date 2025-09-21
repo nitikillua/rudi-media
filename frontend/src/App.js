@@ -1096,7 +1096,7 @@ const AdminBlogPosts = () => {
     <div className="admin-blog-posts">
       <div className="admin-header">
         <h1>Manage Blog Posts</h1>
-        <Link to="/admin/posts/new" className="btn-primary">Create New Post</Link>
+        <Link to="/admin/posts/new" className="admin-btn-primary">Create New Post</Link>
       </div>
       
       <div className="posts-table">
