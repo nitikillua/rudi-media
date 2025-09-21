@@ -321,7 +321,7 @@ class RudiMediaAPITester:
             "Admin Blog Posts - Unauthorized",
             "GET",
             "admin/blog/posts",
-            401
+            403  # FastAPI returns 403 for missing auth
         )
 
     def test_create_blog_post_admin(self):
