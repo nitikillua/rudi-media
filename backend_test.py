@@ -479,7 +479,7 @@ class RudiMediaAPITester:
             "Image Upload - Unauthorized",
             "POST",
             "admin/upload/image",
-            401,
+            403,  # FastAPI returns 403 for missing auth
             files=files
         )
 
