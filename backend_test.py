@@ -525,7 +525,7 @@ class RudiMediaAPITester:
             "Admin Contacts - Unauthorized",
             "GET",
             "contacts",
-            401
+            403  # FastAPI returns 403 for missing auth
         )
 
 def main():
