@@ -1141,18 +1141,6 @@ const AdminBlogEditor = () => {
   const [tagInput, setTagInput] = useState('');
   const [imageUploading, setImageUploading] = useState(false);
 
-  // Rich text editor configuration
-  const quillModules = {
-    toolbar: [
-      [{ 'header': [1, 2, 3, false] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      ['link', 'image', 'video'],
-      [{ 'align': [] }],
-      ['clean']
-    ],
-  };
-
   useEffect(() => {
     // Check if editing an existing post
     const path = window.location.pathname;
