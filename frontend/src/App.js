@@ -1884,32 +1884,33 @@ Wir analysieren Ihre Zielgruppe und entwickeln die optimale Strategie für Ihr U
       id: "3",
       title: "SEO-Trends 2025: Was Sie jetzt wissen müssen",
       content: `
-        <p>Suchmaschinenoptimierung entwickelt sich ständig weiter. Hier sind die wichtigsten SEO-Trends für 2025, die Ihre Website-Strategie beeinflussen werden.</p>
-        
-        <h3>1. KI-gestützte Inhalte und E-A-T</h3>
-        <p>Google legt zunehmend Wert auf Expertise, Autorität und Vertrauenswürdigkeit (E-A-T). Hochwertige, von Experten erstellte Inhalte werden noch wichtiger.</p>
-        
-        <h3>2. Core Web Vitals und Page Experience</h3>
-        <p>Die Ladegeschwindigkeit und Nutzerfreundlichkeit Ihrer Website sind entscheidende Ranking-Faktoren:</p>
-        <ul>
-            <li>Largest Contentful Paint (LCP) unter 2,5 Sekunden</li>
-            <li>First Input Delay (FID) unter 100 Millisekunden</li>
-            <li>Cumulative Layout Shift (CLS) unter 0,1</li>
-        </ul>
-        
-        <h3>3. Lokale SEO wird wichtiger</h3>
-        <p>Für lokale Unternehmen ist die Optimierung für "Near Me"-Suchen entscheidend:</p>
-        <ul>
-            <li>Google My Business Profil pflegen</li>
-            <li>Lokale Keywords verwenden</li>
-            <li>Positive Bewertungen sammeln</li>
-        </ul>
-        
-        <h3>4. Voice Search Optimierung</h3>
-        <p>Mit der zunehmenden Nutzung von Sprachassistenten wird die Optimierung für gesprochene Suchanfragen immer wichtiger.</p>
-        
-        <h3>Unser SEO-Ansatz bei Rudi-Media</h3>
-        <p>Wir kombinieren technische SEO-Expertise mit hochwertiger Content-Strategie, um nachhaltige Ergebnisse zu erzielen. Von der On-Page-Optimierung bis zur Local-SEO-Betreuung – wir sorgen dafür, dass Ihre Website bei Google gefunden wird.</p>
+Suchmaschinenoptimierung entwickelt sich ständig weiter. Hier sind die wichtigsten SEO-Trends für 2025, die Ihre Website-Strategie beeinflussen werden.
+
+### 1. KI-gestützte Inhalte und E-A-T
+
+Google legt zunehmend Wert auf Expertise, Autorität und Vertrauenswürdigkeit (E-A-T). Hochwertige, von Experten erstellte Inhalte werden noch wichtiger.
+
+### 2. Core Web Vitals und Page Experience
+
+Die Ladegeschwindigkeit und Nutzerfreundlichkeit Ihrer Website sind entscheidende Ranking-Faktoren:
+- Largest Contentful Paint (LCP) unter 2,5 Sekunden
+- First Input Delay (FID) unter 100 Millisekunden
+- Cumulative Layout Shift (CLS) unter 0,1
+
+### 3. Lokale SEO wird wichtiger
+
+Für lokale Unternehmen ist die Optimierung für "Near Me"-Suchen entscheidend:
+- Google My Business Profil pflegen
+- Lokale Keywords verwenden
+- Positive Bewertungen sammeln
+
+### 4. Voice Search Optimierung
+
+Mit der zunehmenden Nutzung von Sprachassistenten wird die Optimierung für gesprochene Suchanfragen immer wichtiger.
+
+### Unser SEO-Ansatz bei Rudi-Media
+
+Wir kombinieren technische SEO-Expertise mit hochwertiger Content-Strategie, um nachhaltige Ergebnisse zu erzielen. Von der On-Page-Optimierung bis zur Local-SEO-Betreuung – wir sorgen dafür, dass Ihre Website bei Google gefunden wird.
       `,
       excerpt: "Entdecken Sie die wichtigsten SEO-Trends für 2025 und erfahren Sie, wie Sie Ihre Website für die Zukunft optimieren.",
       author: "Arjanit Rudi",
