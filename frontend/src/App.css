@@ -1916,7 +1916,7 @@ a:focus {
   gap: 10px;
 }
 
-.btn-secondary {
+.admin-btn-secondary {
   padding: 8px 16px;
   background: #6c757d;
   color: white;
@@ -1926,7 +1926,7 @@ a:focus {
   transition: background-color 0.3s ease;
 }
 
-.btn-secondary:hover {
+.admin-btn-secondary:hover {
   background: #5a6268;
 }
 
@@ -1945,7 +1945,7 @@ a:focus {
   background: #c82333;
 }
 
-.btn-primary {
+.admin-btn-primary {
   padding: 8px 16px;
   background: #1e53f9;
   color: white;
@@ -1957,7 +1957,7 @@ a:focus {
   transition: background-color 0.3s ease;
 }
 
-.btn-primary:hover {
+.admin-btn-primary:hover {
   background: #1640cc;
 }
 
