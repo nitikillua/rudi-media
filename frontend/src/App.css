@@ -2135,54 +2135,21 @@ body {
   
   .services-container-redesign {
     padding: 0;
-    margin-bottom: 0;
-    overflow-x: auto;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    position: relative;
-    scroll-snap-type: x mandatory;
-  }
-  
-  .services-container-redesign::-webkit-scrollbar {
-    display: none;
   }
   
   .services-grid-redesign {
-    display: flex;
-    gap: 1.5rem;
-    width: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     padding: 0 1rem;
   }
   
   .service-card-original {
-    flex: 0 0 300px;
-    min-height: 420px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    scroll-snap-align: center;
-    touch-action: pan-y;
-  }
-  
-  .service-card-original:first-child {
-    border-left: 3px solid #3afaff;
-  }
-  
-  .service-card-original:last-child {
-    border-right: 3px solid #3afaff;
-  }
-  
-  .service-image {
-    pointer-events: none;
-  }
-  
-  .service-image img {
-    will-change: auto;
+    width: 100%;
   }
   
   .service-content {
     padding: 20px;
-    touch-action: pan-y;
   }
   
   .services-cta-section {
