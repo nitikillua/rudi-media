@@ -1902,52 +1902,56 @@ body {
 .services-grid-redesign {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-bottom: 4rem;
+  gap: 3rem;
+  margin-bottom: 8rem;
 }
 
 .service-card-redesign {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 50px 40px;
   text-align: center;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 24px rgba(13, 19, 28, 0.06);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(13, 19, 28, 0.1);
+  min-height: 400px;
 }
 
 .service-card-redesign:hover {
-  transform: translateY(-8px);
-  border-color: rgba(58, 250, 255, 0.3);
-  box-shadow: 0 20px 40px rgba(13, 19, 28, 0.15);
+  transform: translateY(-12px);
+  border-color: rgba(58, 250, 255, 0.4);
+  box-shadow: 0 30px 80px rgba(13, 19, 28, 0.25);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .service-icon-redesign {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 1.5rem;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #1e53f9, #3afaff);
-  border-radius: 16px;
+  border-radius: 20px;
   color: #fff;
 }
 
 .service-content-redesign h3 {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
   color: #fff;
+  line-height: 1.2;
 }
 
 .service-content-redesign p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+  font-weight: 300;
 }
 
 .service-benefits {
