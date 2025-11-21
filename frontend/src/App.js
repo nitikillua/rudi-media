@@ -612,9 +612,6 @@ const WhyChooseUs = () => {
 };
 
 const Services = () => {
-  const [activeCard, setActiveCard] = React.useState(0);
-  const containerRef = React.useRef(null);
-  
   const services = [
     {
       title: "Social Media Marketing",
@@ -655,48 +652,6 @@ const Services = () => {
       icon: "🌐"
     }
   ];
-
-  React.useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    // Small delay to ensure container is rendered
-    setTimeout(() => {
-      container.scrollLeft = 0;
-    }, 100);
-
-    const handleScroll = () => {
-      const scrollLeft = container.scrollLeft;
-      const cardWidth = 324; // 300px card width + 24px gap
-      
-      // Simple calculation: which card are we closest to?
-      let currentCard = Math.round(scrollLeft / cardWidth);
-      
-      // Clamp between 0 and number of services - 1
-      currentCard = Math.max(0, Math.min(currentCard, services.length - 1));
-      
-      setActiveCard(currentCard);
-    };
-
-    container.addEventListener('scroll', handleScroll);
-    
-    // Initial call after a short delay
-    setTimeout(handleScroll, 150);
-    
-    return () => container.removeEventListener('scroll', handleScroll);
-  }, [services.length]);
-
-  const scrollToCard = (index) => {
-    const container = containerRef.current;
-    if (!container) return;
-    
-    const cardWidth = 324; // 300px card width + 24px gap
-    
-    container.scrollTo({
-      left: index * cardWidth,
-      behavior: 'smooth'
-    });
-  };
 
   return (
     <section id="services" className="services-redesign">
