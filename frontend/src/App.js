@@ -615,49 +615,41 @@ const Services = () => {
   const services = [
     {
       title: "Social Media Marketing",
-      description: "Professionelle Betreuung Ihrer Social Media Kanäle mit viral-optimiertem Content, der verkauft.",
-      icon: (
-        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
-          <line x1="12" y1="18" x2="12.01" y2="18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <rect x="7" y="4" width="10" height="12" rx="1" fill="currentColor" fillOpacity="0.1"/>
-          <line x1="9" y1="7" x2="15" y2="7" stroke="currentColor" strokeWidth="1"/>
-          <line x1="9" y1="9" x2="13" y2="9" stroke="currentColor" strokeWidth="1"/>
-          <line x1="9" y1="11" x2="15" y2="11" stroke="currentColor" strokeWidth="1"/>
-        </svg>
-      ),
-      benefits: ["Content-Erstellung & Design", "Virale Reels & Stories", "Community Management", "Analytics & ROI-Tracking"]
+      description: "Professionelle Betreuung Ihrer Social Media Kanäle mit maßgeschneiderten Inhalten, die Ihre Zielgruppe begeistern und zu Kunden machen.",
+      features: [
+        "Content-Erstellung & Design",
+        "vor Ort: Video & Fotaufnahmen", 
+        "virale Reels",
+        "Analytics & Reporting"
+      ],
+      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwxfHxzb2NpYWwlMjBtZWRpYSUyMG1hcmtldGluZ3xlbnwwfHx8fDE3NTcyODczMTV8MA&ixlib=rb-4.1.0&q=85",
+      icon: "📱"
     },
     {
       title: "Google & Meta Ads",
-      description: "ROI-optimierte Werbekampagnen, die messbare Ergebnisse liefern.",
-      icon: (
-        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="7" y1="17" x2="17" y2="7" stroke="currentColor" strokeWidth="2"/>
-          <polyline points="17,13 17,7 11,7" stroke="currentColor" strokeWidth="2"/>
-          <line x1="7" y1="17" x2="7" y2="21" stroke="currentColor" strokeWidth="2"/>
-          <line x1="12" y1="17" x2="12" y2="19" stroke="currentColor" strokeWidth="2"/>
-          <line x1="17" y1="17" x2="17" y2="20" stroke="currentColor" strokeWidth="2"/>
-          <circle cx="7" cy="17" r="1" fill="currentColor"/>
-          <circle cx="12" cy="17" r="1" fill="currentColor"/>
-          <circle cx="17" cy="17" r="1" fill="currentColor"/>
-        </svg>
-      ),
-      benefits: ["Google Ads Management", "Facebook & Instagram Ads", "Conversion Tracking", "Landing Page Optimierung"]
+      description: "Maximieren Sie Ihren ROI mit professionell verwalteten Werbekampagnen auf Google, Facebook und Instagram.",
+      features: [
+        "Google Ads Management",
+        "Facebook & Instagram Ads",
+        "Keyword-Recherche & Optimierung", 
+        "Landing Page Optimierung",
+        "Conversion Tracking"
+      ],
+      image: "https://images.unsplash.com/photo-1654277041042-8927699fcfd2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxnb29nbGUlMjBhZHN8ZW58MHx8fHwxNzU3Mjg3MzIxfDA&ixlib=rb-4.1.0&q=85",
+      icon: "🎯"
     },
     {
-      title: "SEO & Webdesign",
-      description: "Moderne Websites, die nicht nur gut aussehen, sondern auch bei Google gefunden werden.",
-      icon: (
-        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 3L10.07 8.93L17 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M13 13L8 8L3 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" strokeWidth="2" fill="none"/>
-          <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" strokeWidth="2"/>
-          <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" strokeWidth="2"/>
-        </svg>
-      ),
-      benefits: ["Responsive Webdesign", "Suchmaschinenoptimierung", "Performance Optimierung", "Local SEO"]
+      title: "SEO & Webdesign", 
+      description: "Moderne, suchmaschinenoptimierte Websites, die nicht nur gut aussehen, sondern auch bei Google gefunden werden.",
+      features: [
+        "Responsive Webdesign",
+        "Suchmaschinenoptimierung",
+        "Performance Optimierung",
+        "Content Management",
+        "Local SEO"
+      ],
+      image: "https://images.pexels.com/photos/270637/pexels-photo-270637.jpeg",
+      icon: "🌐"
     }
   ];
 
