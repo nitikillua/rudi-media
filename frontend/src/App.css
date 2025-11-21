@@ -2150,19 +2150,22 @@ body {
     padding: 0 1rem;
   }
   
-  .service-card-redesign {
-    flex: 0 0 280px;
-    padding: 30px 25px;
-    min-height: 380px;
+  .service-card-original {
+    flex: 0 0 300px;
+    min-height: 420px;
     border: 2px solid rgba(255, 255, 255, 0.1);
   }
   
-  .service-card-redesign:first-child {
+  .service-card-original:first-child {
     border-left: 3px solid #3afaff;
   }
   
-  .service-card-redesign:last-child {
+  .service-card-original:last-child {
     border-right: 3px solid #3afaff;
+  }
+  
+  .service-content {
+    padding: 20px;
   }
   
   .services-cta-section {
