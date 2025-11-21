@@ -2003,40 +2003,45 @@ body {
   font-size: 0.95rem;
 }
 
-.service-benefits {
+.service-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 1.5rem 0;
+  margin: 20px 0;
 }
 
-.service-benefits li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
+.service-features li {
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  position: relative;
+  padding-left: 15px;
 }
 
-.service-benefits svg {
+.service-features li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
   color: #3afaff;
-  flex-shrink: 0;
+  font-weight: bold;
 }
 
-.service-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #3afaff;
+.service-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #1e53f9, #3afaff);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 25px;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
-.service-cta:hover {
-  color: #fff;
-  transform: translateX(4px);
+.service-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(30, 83, 249, 0.4);
 }
 
 .services-cta-section {
