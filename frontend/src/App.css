@@ -2137,13 +2137,12 @@ body {
     padding: 0;
     margin-bottom: 0;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
     position: relative;
     scroll-snap-type: x mandatory;
-    touch-action: pan-x;
   }
   
   .services-container-redesign::-webkit-scrollbar {
@@ -2162,6 +2161,7 @@ body {
     min-height: 420px;
     border: 2px solid rgba(255, 255, 255, 0.1);
     scroll-snap-align: center;
+    touch-action: pan-y;
   }
   
   .service-card-original:first-child {
@@ -2172,12 +2172,17 @@ body {
     border-right: 3px solid #3afaff;
   }
   
+  .service-image {
+    pointer-events: none;
+  }
+  
   .service-image img {
     will-change: auto;
   }
   
   .service-content {
     padding: 20px;
+    touch-action: pan-y;
   }
   
   .services-cta-section {
