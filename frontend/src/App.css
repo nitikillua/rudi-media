@@ -1670,12 +1670,13 @@ body {
 
 .hero-redesign {
   position: relative;
-  min-height: 75vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   background: #000;
+  padding: 120px 0 80px;
 }
 
 .hero-bg-redesign {
