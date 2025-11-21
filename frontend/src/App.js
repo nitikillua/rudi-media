@@ -1023,58 +1023,45 @@ const ContactForm = () => {
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer-viral">
       <div className="container">
-        <div className="footer-content">
-          <div className="footer-section">
+        <div className="footer-main-viral">
+          <div className="footer-brand-viral">
             <img 
               src="https://customer-assets.emergentagent.com/job_87b36088-4f8b-4f3a-a10a-49faeb5d7cca/artifacts/17d24le9_ohne%20hintergrund%20das%20gute%20Kopie.png" 
               alt="Rudi-Media Logo" 
-              className="footer-logo"
+              className="footer-logo-viral"
             />
-            <p>Ihr Partner für professionelles Digital Marketing und nachhaltigen Online-Erfolg.</p>
+            <h3>Rudi-Media © — 2025</h3>
           </div>
           
-          <div className="footer-section">
+          <div className="footer-contact-viral">
             <h4>Kontakt</h4>
-            <p>Kampenwandstr. 2<br />85586 Poing</p>
-            <p>Tel: +49 1522 2539425</p>
-            <p>info@rudi-media.de</p>
+            <div className="contact-details-viral">
+              <p>Rudi-Media</p>
+              <p>Kampenwandstr. 2</p>
+              <p>85586 Poing</p>
+              <p>+49 1522 2539425</p>
+              <p>info@rudi-media.de</p>
+            </div>
           </div>
           
-          <div className="footer-section">
-            <h4>Leistungen</h4>
+          <div className="footer-links-viral">
+            <h4>Service</h4>
             <ul>
               <li><a href="#services">Social Media Marketing</a></li>
               <li><a href="#services">Google & Meta Ads</a></li>
               <li><a href="#services">SEO & Webdesign</a></li>
+              <li><a href="/blog">Blog</a></li>
             </ul>
-          </div>
-          
-          <div className="footer-section">
-            <h4>Social Media</h4>
-            <div className="social-links">
-              <a href="https://instagram.com/rudimedia.de" target="_blank" rel="noopener noreferrer">
-                Instagram
-              </a>
-            </div>
           </div>
         </div>
         
-        <div className="footer-bottom" id="impressum">
-          <div className="impressum">
-            <h4>Impressum</h4>
-            <p>
-              <strong>Rudi-Media</strong><br />
-              Inhaber: Arjanit Rudi<br />
-              Kampenwandstr. 2<br />
-              85586 Poing<br />
-              Telefon: +49 1522 2539425
-            </p>
-          </div>
-          
-          <div className="copyright">
-            <p>&copy; 2025 Rudi-Media. Alle Rechte vorbehalten.</p>
+        <div className="footer-bottom-viral" id="impressum">
+          <div className="footer-legal">
+            <a href="#impressum">Impressum</a>
+            <a href="#datenschutz">Datenschutz</a>
+            <a href="#agb">AGB</a>
           </div>
         </div>
       </div>
