@@ -405,7 +405,17 @@ const CustomCursor = () => {
 // Components
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const scrollToTop = useScrollToTop();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 60);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -426,27 +436,45 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="navigation">
-      <div className="nav-container">
-        <Link to="/" className="logo" onClick={handleLinkClick}>
+    <nav className={`navigation-redesign ${isScrolled ? 'scrolled' : ''}`}>
+      <div className="nav-container-redesign">
+        <Link to="/" className="logo-redesign" onClick={handleLinkClick}>
           <img 
             src="https://customer-assets.emergentagent.com/job_87b36088-4f8b-4f3a-a10a-49faeb5d7cca/artifacts/17d24le9_ohne%20hintergrund%20das%20gute%20Kopie.png" 
             alt="Rudi-Media Logo" 
-            className="logo-img"
+            className="logo-img-redesign"
           />
         </Link>
         
-        <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-          <Link to="/" className="nav-link" onClick={handleLinkClick}>Home</Link>
-          <a href="/#services" className="nav-link" onClick={handleMenuClick}>Leistungen</a>
-          <Link to="/about" className="nav-link" onClick={handleLinkClick}>Über uns</Link>
-          <Link to="/blog" className="nav-link" onClick={handleLinkClick}>Blog</Link>
-          <a href="/#contact" className="nav-link" onClick={handleMenuClick}>Kontakt</a>
+        <div className={`nav-menu-redesign ${isMenuOpen ? 'active' : ''}`}>
+          <Link to="/" className="nav-link-redesign" onClick={handleLinkClick}>Home</Link>
+          <a href="/#services" className="nav-link-redesign" onClick={handleMenuClick}>Leistungen</a>
+          <Link to="/blog" className="nav-link-redesign" onClick={handleLinkClick}>Blog</Link>
+          <Link to="/about" className="nav-link-redesign" onClick={handleLinkClick}>Über uns</Link>
+          <a href="/#contact" className="nav-link-redesign" onClick={handleMenuClick}>Kontakt</a>
+        </div>
+        
+        <div className="nav-actions-redesign">
+          <a 
+            href="tel:+4915222539425" 
+            className="nav-phone-redesign"
+            title="Anrufen: +49 1522 2539425"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08V3.08" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="phone-number">+49 1522 2539425</span>
+          </a>
+          
+          <a href="#contact" className="nav-cta-redesign" onClick={handleMenuClick}>
+            Strategiegespräch
+          </a>
         </div>
         
         <button 
-          className="nav-toggle"
+          className="nav-toggle-redesign"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle navigation menu"
         >
           <span></span>
           <span></span>
