@@ -610,56 +610,6 @@ const WhyChooseUs = () => {
     </section>
   );
 };
-        
-        <div className="team-section">
-          <motion.div 
-            className="team-content"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-          >
-            <motion.div className="team-text" variants={fadeInUp}>
-              <h3>Expertise, die sich auszahlt</h3>
-              <p>
-                Mit jahrelanger Erfahrung im digitalen Marketing und etlichen erfolgreichen 
-                Projekten wissen wir genau, was funktioniert. Unser Fokus liegt auf messbaren 
-                Ergebnissen und nachhaltigem Wachstum für Ihr Unternehmen.
-              </p>
-            </motion.div>
-            <motion.div className="team-image" variants={fadeInUp}>
-              <img 
-                src="https://customer-assets.emergentagent.com/job_87b36088-4f8b-4f3a-a10a-49faeb5d7cca/artifacts/dhq0gyiw_schreibtisch.png" 
-                alt="Authentischer Arbeitsplatz von Rudi-Media: Video-Editing, Analytics und Webdesign auf drei Monitoren"
-              />
-            </motion.div>
-          </motion.div>
-          
-          <motion.div 
-            className="trust-indicators"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-          >
-            <motion.div className="trust-item" variants={fadeInUp}>
-              <h4><CounterAnimation target={50} /></h4>
-              <p>Erfolgreiche Projekte</p>
-            </motion.div>
-            <motion.div className="trust-item" variants={fadeInUp}>
-              <h4><CounterAnimation target={5} /></h4>
-              <p>Jahre Erfahrung</p>
-            </motion.div>
-            <motion.div className="trust-item" variants={fadeInUp}>
-              <h4><CounterAnimation target={100} />%</h4>
-              <p>Kundenzufriedenheit</p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 const Services = () => {
   const services = [
