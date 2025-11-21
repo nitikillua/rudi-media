@@ -2127,7 +2127,6 @@ body {
 @media (max-width: 767px) {
   .services-redesign {
     padding: 48px 0;
-    padding-bottom: 120px; /* Extra space for fixed indicators */
   }
   
   .section-header-redesign h2 {
