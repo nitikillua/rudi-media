@@ -86,8 +86,11 @@ body {
   border-color: rgba(30, 83, 249, 0.6);
 }
 
-/* Navigation */
-.navigation {
+/* ==============================================
+   REDESIGNED NAVIGATION - MODERN & STICKY
+   ============================================== */
+
+.navigation-redesign {
   position: fixed;
   top: 0;
   left: 0;
@@ -98,6 +101,223 @@ body {
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+}
+
+.navigation-redesign.scrolled {
+  padding: 12px 0;
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-container-redesign {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-redesign {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  z-index: 1001;
+}
+
+.logo-img-redesign {
+  height: 40px;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.navigation-redesign.scrolled .logo-img-redesign {
+  height: 32px;
+}
+
+.nav-menu-redesign {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link-redesign {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link-redesign:hover {
+  color: #3afaff;
+}
+
+.nav-link-redesign::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  background: linear-gradient(135deg, #1e53f9, #3afaff);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link-redesign:hover::after {
+  width: 100%;
+}
+
+.nav-actions-redesign {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-phone-redesign {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-phone-redesign:hover {
+  color: #3afaff;
+}
+
+.phone-number {
+  display: inline;
+}
+
+.nav-cta-redesign {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #1e53f9, #3afaff);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 25px;
+  border: none;
+  box-shadow: 0 4px 15px rgba(30, 83, 249, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-cta-redesign:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(30, 83, 249, 0.4);
+}
+
+.nav-toggle-redesign {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.nav-toggle-redesign span {
+  width: 25px;
+  height: 2px;
+  background: #fff;
+  margin: 3px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .nav-menu-redesign {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-menu-redesign.active {
+    transform: translateX(0);
+  }
+  
+  .nav-link-redesign {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .nav-actions-redesign {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column;
+    gap: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-menu-redesign.active ~ .nav-actions-redesign {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .nav-phone-redesign {
+    font-size: 16px;
+    justify-content: center;
+  }
+  
+  .phone-number {
+    display: inline;
+  }
+  
+  .nav-cta-redesign {
+    padding: 16px 32px;
+    font-size: 16px;
+    border-radius: 30px;
+  }
+  
+  .nav-toggle-redesign {
+    display: flex;
+  }
+  
+  .nav-menu-redesign.active ~ .nav-toggle-redesign span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  
+  .nav-menu-redesign.active ~ .nav-toggle-redesign span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .nav-menu-redesign.active ~ .nav-toggle-redesign span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-number {
+    display: none;
+  }
 }
 
 .navigation.scrolled {
