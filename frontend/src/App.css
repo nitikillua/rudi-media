@@ -2214,6 +2214,190 @@ body {
   }
 }
 
+/* ==============================================
+   WHY CHOOSE US - VIRAL HOUSE STYLE
+   ============================================== */
+
+.why-choose-us-viral {
+  padding: 200px 0;
+  background: #000;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.why-content-viral {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.why-content-viral h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 6rem;
+  letter-spacing: -0.03em;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.viral-highlight {
+  background: linear-gradient(135deg, #1e53f9, #3afaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.why-benefits-viral {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+  margin: 6rem 0;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefit-viral {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  text-align: left;
+}
+
+.benefit-number {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #3afaff;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.benefit-content h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.benefit-content p {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.why-cta-viral {
+  margin-top: 4rem;
+}
+
+/* Mobile Responsive Why Choose Us */
+@media (max-width: 768px) {
+  .why-choose-us-viral {
+    padding: 120px 0;
+    min-height: 80vh;
+  }
+  
+  .why-content-viral h2 {
+    font-size: 3rem;
+    margin-bottom: 4rem;
+  }
+  
+  .why-benefits-viral {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin: 4rem 0;
+  }
+  
+  .benefit-viral {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .benefit-number {
+    font-size: 2.5rem;
+    align-self: center;
+  }
+  
+  .benefit-content h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* ==============================================
+   CONTACT SECTION - VIRAL HOUSE STYLE
+   ============================================== */
+
+.contact-viral {
+  padding: 200px 0;
+  background: linear-gradient(135deg, rgba(30, 83, 249, 0.03) 0%, rgba(58, 250, 255, 0.03) 100%);
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.contact-viral::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(58, 250, 255, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.contact-header-viral {
+  text-align: center;
+  margin-bottom: 6rem;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-header-viral h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 2rem;
+  letter-spacing: -0.03em;
+}
+
+.contact-header-viral p {
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Mobile Responsive Contact */
+@media (max-width: 768px) {
+  .contact-viral {
+    padding: 120px 0;
+    min-height: 80vh;
+  }
+  
+  .contact-header-viral h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-header-viral p {
+    font-size: 1.25rem;
+  }
+}
+
 /* Cookie Banner */
 .cookie-banner {
   position: fixed;
