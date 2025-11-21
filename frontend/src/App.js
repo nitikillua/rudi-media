@@ -696,7 +696,7 @@ const Services = () => {
           <p>Social-First Marketing Lösungen, die verkaufen</p>
         </motion.div>
         
-        <div className="services-container-redesign">
+        <div className="services-container-redesign" ref={containerRef}>
           <motion.div 
             className="services-grid-redesign"
             initial="hidden"
@@ -738,9 +738,13 @@ const Services = () => {
           {/* Mobile Swipe Indicators */}
           <div className="mobile-swipe-indicators">
             <div className="swipe-dots">
-              <div className="dot active"></div>
-              <div className="dot"></div>
-              <div className="dot"></div>
+              {services.map((_, index) => (
+                <div 
+                  key={index}
+                  className={`dot ${activeCard === index ? 'active' : ''}`}
+                  onClick={() => scrollToCard(index)}
+                />
+              ))}
             </div>
             <div className="swipe-hint">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
