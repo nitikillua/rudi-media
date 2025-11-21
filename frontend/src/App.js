@@ -2178,6 +2178,7 @@ const Home = () => {
       <Hero />
       <WhyChooseUs />
       <Services />
+      <BigImpactSection />
       <ContactForm />
       <Footer />
     </div>
