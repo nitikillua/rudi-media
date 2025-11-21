@@ -2135,13 +2135,15 @@ body {
   
   .services-container-redesign {
     padding: 0;
-    overflow-x: scroll;
-    overflow-y: visible;
+    margin-bottom: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
     position: relative;
     scroll-snap-type: x mandatory;
+    touch-action: pan-x;
   }
   
   .services-container-redesign::-webkit-scrollbar {
@@ -2151,7 +2153,7 @@ body {
   .services-grid-redesign {
     display: flex;
     gap: 1.5rem;
-    width: calc(300px * 3 + 1.5rem * 2 + 2rem);
+    width: auto;
     padding: 0 1rem;
   }
   
@@ -2168,6 +2170,10 @@ body {
   
   .service-card-original:last-child {
     border-right: 3px solid #3afaff;
+  }
+  
+  .service-image img {
+    will-change: auto;
   }
   
   .service-content {
