@@ -2376,6 +2376,7 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  overflow: visible;
 }
 
 .why-choose-us-viral::before {
