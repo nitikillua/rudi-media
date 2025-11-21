@@ -2279,9 +2279,14 @@ body {
     min-height: 80vh;
   }
   
+  .big-impact-content {
+    text-align: center;
+  }
+  
   .big-impact-content h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 3rem;
+    text-align: center;
   }
   
   .impact-stats {
