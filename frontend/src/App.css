@@ -2127,6 +2127,7 @@ body {
 @media (max-width: 767px) {
   .services-redesign {
     padding: 48px 0;
+    padding-bottom: 120px; /* Extra space for fixed indicators */
   }
   
   .section-header-redesign h2 {
@@ -2135,11 +2136,13 @@ body {
   
   .services-container-redesign {
     padding: 0;
-    overflow-x: auto;
+    overflow-x: scroll;
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
     position: relative;
+    scroll-snap-type: x mandatory;
   }
   
   .services-container-redesign::-webkit-scrollbar {
@@ -2157,6 +2160,7 @@ body {
     flex: 0 0 300px;
     min-height: 420px;
     border: 2px solid rgba(255, 255, 255, 0.1);
+    scroll-snap-align: center;
   }
   
   .service-card-original:first-child {
