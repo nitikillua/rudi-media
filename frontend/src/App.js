@@ -727,7 +727,7 @@ const Services = () => {
               variants={fadeInUp}
             >
               <div className="service-image">
-                <img src={service.image} alt={service.title} />
+                <img src={service.image} alt={service.title} loading="lazy" />
                 <div className="service-overlay">
                   <span className="service-icon">{service.icon}</span>
                 </div>
@@ -750,24 +750,24 @@ const Services = () => {
             </motion.div>
           ))}
           </motion.div>
-          
-          {/* Mobile Swipe Indicators */}
-          <div className="mobile-swipe-indicators">
-            <div className="swipe-dots">
-              {services.map((_, index) => (
-                <div 
-                  key={index}
-                  className={`dot ${activeCard === index ? 'active' : ''}`}
-                  onClick={() => scrollToCard(index)}
-                />
-              ))}
-            </div>
-            <div className="swipe-hint">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span>Swipe</span>
-            </div>
+        </div>
+        
+        {/* Mobile Swipe Indicators - OUTSIDE scroll container */}
+        <div className="mobile-swipe-indicators">
+          <div className="swipe-dots">
+            {services.map((_, index) => (
+              <div 
+                key={index}
+                className={`dot ${activeCard === index ? 'active' : ''}`}
+                onClick={() => scrollToCard(index)}
+              />
+            ))}
+          </div>
+          <div className="swipe-hint">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span>Swipe</span>
           </div>
         </div>
         
