@@ -668,59 +668,38 @@ const WhyChooseUs = () => {
 const Services = () => {
   const services = [
     {
-      title: "Social Media Management",
+      title: "Social Media Marketing",
       description: "Professionelle Betreuung Ihrer Social Media Kanäle mit viral-optimiertem Content, der verkauft.",
       icon: (
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C18.1046 10 19 10.8954 19 12V18C19 19.1046 18.1046 20 17 20H7C5.89543 20 5 19.1046 5 18V12C5 10.8954 5.89543 10 7 10Z" stroke="currentColor" strokeWidth="2"/>
-          <path d="M12 14V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
-      benefits: ["Content-Erstellung & Design", "Virale Reels & Stories", "Analytics & ROI-Tracking"]
-    },
-    {
-      title: "Content Produktion",  
-      description: "Video-Content & Reels, die Aufmerksamkeit generieren und zu Conversions führen.",
-      icon: (
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14.7519 11.1679L11.5547 9.03647C10.8901 8.59343 10 9.06982 10 9.86852V14.1315C10 14.9302 10.8901 15.4066 11.5547 14.9635L14.7519 12.8321C15.3457 12.4362 15.3457 11.5638 14.7519 11.1679Z" stroke="currentColor" strokeWidth="2"/>
-          <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2"/>
-        </svg>
-      ),
-      benefits: ["Professionelle Videos", "Vor-Ort Aufnahmen", "Post-Production & Editing"]
-    },
-    {
-      title: "Webdesign & SEO",
-      description: "Moderne Websites, die nicht nur gut aussehen, sondern auch bei Google gefunden werden.",
-      icon: (
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L13.09 8.26L18 7L14.74 12L18 17L13.09 15.74L12 22L10.91 15.74L6 17L9.26 12L6 7L10.91 8.26L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-        </svg>
-      ),
-      benefits: ["Responsive Design", "SEO-Optimierung", "Performance & Speed"]
+      benefits: ["Content-Erstellung & Design", "Virale Reels & Stories", "Community Management", "Analytics & ROI-Tracking"]
     },
     {
       title: "Google & Meta Ads",
       description: "ROI-optimierte Werbekampagnen, die messbare Ergebnisse liefern.",
       icon: (
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L3 7L12 12L21 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M3 17L12 22L21 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M3 12L12 17L21 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
-      benefits: ["Google Ads Management", "Facebook & Instagram Ads", "Conversion Tracking"]
+      benefits: ["Google Ads Management", "Facebook & Instagram Ads", "Conversion Tracking", "Landing Page Optimierung"]
     },
     {
-      title: "Paid Social Media",
-      description: "Strategische Social Media Werbung für maximale Reichweite und Conversions.",
+      title: "SEO & Webdesign",
+      description: "Moderne Websites, die nicht nur gut aussehen, sondern auch bei Google gefunden werden.",
       icon: (
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17 2L22 7L17 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M1 12V10C1 8.93913 1.42143 7.92172 2.17157 7.17157C2.92172 6.42143 3.93913 6 5 6H22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M7 22L2 17L7 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M23 12V14C23 15.0609 22.5786 16.0783 21.8284 16.8284C21.0783 17.5786 20.0609 18 19 18H2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
+          <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" strokeWidth="2"/>
+          <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" strokeWidth="2"/>
         </svg>
       ),
-      benefits: ["Zielgruppen-Targeting", "A/B-Testing", "Performance Analytics"]
+      benefits: ["Responsive Webdesign", "Suchmaschinenoptimierung", "Performance Optimierung", "Local SEO"]
     }
   ];
 
