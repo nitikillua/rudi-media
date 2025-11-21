@@ -612,6 +612,9 @@ const WhyChooseUs = () => {
 };
 
 const Services = () => {
+  const [activeCard, setActiveCard] = React.useState(0);
+  const containerRef = React.useRef(null);
+  
   const services = [
     {
       title: "Social Media Marketing",
@@ -652,6 +655,32 @@ const Services = () => {
       icon: "🌐"
     }
   ];
+
+  React.useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = 300 + 24; // card width + gap
+      const currentCard = Math.round(scrollLeft / cardWidth);
+      setActiveCard(currentCard);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToCard = (index) => {
+    const container = containerRef.current;
+    if (!container) return;
+    
+    const cardWidth = 300 + 24; // card width + gap
+    container.scrollTo({
+      left: index * cardWidth,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <section id="services" className="services-redesign">
