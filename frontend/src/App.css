@@ -2089,12 +2089,19 @@ body {
     padding: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
+  }
+  
+  .services-container-redesign::-webkit-scrollbar {
+    display: none;
   }
   
   .services-grid-redesign {
     display: flex;
     gap: 1.5rem;
-    width: max-content;
+    width: calc(280px * 3 + 1.5rem * 2 + 2rem);
     padding: 0 1rem;
   }
   
@@ -2102,6 +2109,15 @@ body {
     flex: 0 0 280px;
     padding: 30px 25px;
     min-height: 380px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .service-card-redesign:first-child {
+    border-left: 3px solid #3afaff;
+  }
+  
+  .service-card-redesign:last-child {
+    border-right: 3px solid #3afaff;
   }
   
   .services-cta-section {
@@ -2110,6 +2126,53 @@ body {
   
   .services-cta-section h3 {
     font-size: 1.75rem;
+  }
+}
+
+/* Mobile Swipe Indicators */
+.mobile-swipe-indicators {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobile-swipe-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .swipe-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .dot.active {
+    background: #3afaff;
+    transform: scale(1.2);
+  }
+  
+  .swipe-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    animation: swipeHint 2s infinite;
+  }
+  
+  @keyframes swipeHint {
+    0%, 100% { transform: translateX(0); opacity: 0.6; }
+    50% { transform: translateX(5px); opacity: 1; }
   }
 }
 
