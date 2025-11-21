@@ -716,7 +716,8 @@ const Services = () => {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+          </motion.div>
+        </div>
         
         {/* CTA Section */}
         <motion.div 
