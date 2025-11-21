@@ -875,17 +875,20 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className="contact-viral">
       <div className="container">
         <motion.div 
-          className="section-header"
+          className="contact-header-viral"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <h2>Kontakt aufnehmen</h2>
-          <p>Bereit für Ihren digitalen Durchbruch? Lassen Sie uns sprechen!</p>
+          <h2>
+            Bereit für 
+            <span className="viral-highlight"> mehr Erfolg?</span>
+          </h2>
+          <p>Kostenlose Beratung sichern</p>
         </motion.div>
         
         <motion.div 
