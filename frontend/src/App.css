@@ -1688,7 +1688,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
   background: #000;
   padding: 120px 0 80px;
 }
