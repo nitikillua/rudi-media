@@ -711,6 +711,7 @@ body {
 .services {
   padding: 120px 0;
   background: #000;
+  overflow: visible;
 }
 
 .services-grid {
