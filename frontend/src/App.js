@@ -618,13 +618,12 @@ const Services = () => {
       description: "Professionelle Betreuung Ihrer Social Media Kanäle mit viral-optimiertem Content, der verkauft.",
       icon: (
         <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
-          <path d="M8 21L16 21" stroke="currentColor" strokeWidth="2"/>
-          <path d="M12 17L12 21" stroke="currentColor" strokeWidth="2"/>
-          <circle cx="7" cy="9" r="1" fill="currentColor"/>
-          <circle cx="12" cy="9" r="1" fill="currentColor"/>
-          <circle cx="17" cy="9" r="1" fill="currentColor"/>
-          <path d="M6 13L8 11L11 14L16 9L18 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
+          <line x1="12" y1="18" x2="12.01" y2="18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <rect x="7" y="4" width="10" height="12" rx="1" fill="currentColor" fillOpacity="0.1"/>
+          <line x1="9" y1="7" x2="15" y2="7" stroke="currentColor" strokeWidth="1"/>
+          <line x1="9" y1="9" x2="13" y2="9" stroke="currentColor" strokeWidth="1"/>
+          <line x1="9" y1="11" x2="15" y2="11" stroke="currentColor" strokeWidth="1"/>
         </svg>
       ),
       benefits: ["Content-Erstellung & Design", "Virale Reels & Stories", "Community Management", "Analytics & ROI-Tracking"]
