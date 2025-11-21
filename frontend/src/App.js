@@ -982,7 +982,10 @@ const Footer = () => {
               alt="Rudi-Media Logo" 
               className="footer-logo-viral"
             />
-            <h3>Rudi-Media © — 2025</h3>
+            <div className="footer-brand-text">
+              <h3>Rudi-Media</h3>
+              <p>&copy; 2025</p>
+            </div>
           </div>
           
           <div className="footer-contact-viral">
