@@ -23,14 +23,31 @@ body {
 
 html {
   overflow-x: hidden;
-  width: 100%;
+  width: 100vw;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 * {
   box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 .App {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+section {
   overflow-x: hidden;
   width: 100%;
 }
