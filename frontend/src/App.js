@@ -758,16 +758,16 @@ const BigImpactSection = () => {
           
           <div className="impact-stats">
             <div className="impact-stat">
-              <div className="stat-number">320%</div>
-              <div className="stat-label">Mehr Reichweite</div>
+              <div className="stat-number">50+</div>
+              <div className="stat-label">Erfolgreiche Projekte</div>
             </div>
             <div className="impact-stat">
-              <div className="stat-number">150+</div>
-              <div className="stat-label">Zufriedene Kunden</div>
+              <div className="stat-number">5+</div>
+              <div className="stat-label">Jahre Erfahrung</div>
             </div>
             <div className="impact-stat">
-              <div className="stat-number">5M+</div>
-              <div className="stat-label">Views generiert</div>
+              <div className="stat-number">100%</div>
+              <div className="stat-label">Kundenzufriedenheit</div>
             </div>
           </div>
           
