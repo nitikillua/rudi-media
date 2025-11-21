@@ -470,44 +470,60 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="hero">
-      <div 
-        className="hero-bg"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1508361727343-ca787442dcd7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB0ZWNobm9sb2d5fGVufDB8fHx8MTc1NzI4NzI5MHww&ixlib=rb-4.1.0&q=85')`,
-          transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
-        }}
-      />
-      <div className="hero-overlay" />
-      <div className="hero-content">
-        <motion.div 
-          className="hero-text"
-          initial="hidden"
-          animate="visible"
-          variants={stagger}
-        >
-          <motion.h1 className="hero-title" variants={fadeInUp}>
-            Ihr digitaler Erfolg beginnt hier
-            <span className="gradient-text">mit Rudi-Media</span>
-          </motion.h1>
-          <motion.p className="hero-subtitle" variants={fadeInUp}>
-            Professionelles Digital Marketing für mehr Sichtbarkeit, Kunden und Umsatz. 
-            Von Social Media bis Google Ads – wir bringen Ihr Unternehmen online nach vorne.
-          </motion.p>
-          <motion.div className="hero-buttons" variants={fadeInUp}>
-            <a href="#contact" className="btn-primary">
-              Kostenlose Beratung
-            </a>
-            <a 
-              href="https://wa.me/4915222539425?text=Hallo%20Rudi-Media,%20ich%20interessiere%20mich%20für%20Ihre%20Digital%20Marketing%20Leistungen."
-              className="btn-secondary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp Chat
-            </a>
+    <section id="home" className="hero-redesign">
+      {/* Hero Background with subtle overlay */}
+      <div className="hero-bg-redesign">
+        <svg className="hero-shape" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#1e53f9" stopOpacity="0.08" />
+              <stop offset="100%" stopColor="#3afaff" stopOpacity="0.12" />
+            </linearGradient>
+          </defs>
+          <path d="M0,100 C200,200 400,50 600,150 C800,250 1000,100 1200,200 L1200,800 L0,800 Z" fill="url(#heroGradient)" />
+        </svg>
+      </div>
+      
+      <div className="container">
+        <div className="hero-content-redesign">
+          <motion.div 
+            className="hero-text-redesign"
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+          >
+            <motion.h1 className="hero-title-redesign" variants={fadeInUp}>
+              Mehr Sichtbarkeit. Mehr Kunden. <span className="hero-highlight">Mehr Umsatz.</span>
+            </motion.h1>
+            <motion.h2 className="hero-subtitle-redesign" variants={fadeInUp}>
+              Wir erstellen Social-First Content & Webdesign, das verkauft. Kostenlose Erstberatung.
+            </motion.h2>
+            <motion.div className="hero-buttons-redesign" variants={fadeInUp}>
+              <a href="#contact" className="btn-primary-hero">
+                Jetzt Strategiegespräch
+              </a>
+              <a href="#services" className="btn-secondary-hero">
+                Leistungen ansehen
+              </a>
+            </motion.div>
+            
+            {/* Trust indicators */}
+            <motion.div className="hero-trust" variants={fadeInUp}>
+              <div className="trust-item">
+                <span className="trust-number">50+</span>
+                <span className="trust-label">Erfolgreiche Projekte</span>
+              </div>
+              <div className="trust-item">
+                <span className="trust-number">5+</span>
+                <span className="trust-label">Jahre Erfahrung</span>
+              </div>
+              <div className="trust-item">
+                <span className="trust-number">100%</span>
+                <span className="trust-label">Kundenzufriedenheit</span>
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
