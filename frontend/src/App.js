@@ -673,13 +673,14 @@ const Services = () => {
           <p>Social-First Marketing Lösungen, die verkaufen</p>
         </motion.div>
         
-        <motion.div 
-          className="services-grid-redesign"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={stagger}
-        >
+        <div className="services-container-redesign">
+          <motion.div 
+            className="services-grid-redesign"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+          >
           {services.map((service, index) => (
             <motion.div 
               key={index} 
