@@ -736,7 +736,7 @@ body {
 .service-image {
   position: relative;
   height: 250px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .service-image img {
