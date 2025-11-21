@@ -660,15 +660,23 @@ const Services = () => {
     const container = containerRef.current;
     if (!container) return;
 
+    // Reset scroll position to start
+    container.scrollLeft = 0;
+
     const handleScroll = () => {
       const scrollLeft = container.scrollLeft;
       const cardWidth = 324; // 300px card width + 24px gap
-      const padding = 16; // padding from container
-      const currentCard = Math.round((scrollLeft - padding) / cardWidth);
+      const viewportWidth = container.offsetWidth;
+      const centerOffset = (viewportWidth - 300) / 2;
+      
+      // Calculate which card is most centered in the viewport
+      const currentCard = Math.round((scrollLeft + centerOffset) / cardWidth);
       setActiveCard(Math.max(0, Math.min(currentCard, services.length - 1)));
     };
 
     container.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+    
     return () => container.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -677,9 +685,11 @@ const Services = () => {
     if (!container) return;
     
     const cardWidth = 324; // 300px card width + 24px gap
-    const padding = 16;
+    const viewportWidth = container.offsetWidth;
+    const centerOffset = (viewportWidth - 300) / 2;
+    
     container.scrollTo({
-      left: (index * cardWidth) + padding,
+      left: (index * cardWidth) - centerOffset + 16,
       behavior: 'smooth'
     });
   };
