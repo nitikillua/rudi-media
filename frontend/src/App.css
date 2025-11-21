@@ -1444,6 +1444,401 @@ body {
   }
 }
 
+/* ==============================================
+   REDESIGNED HERO SECTION - VIRAL HOUSE INSPIRED
+   ============================================== */
+
+.hero-redesign {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-bg-redesign {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+.hero-content-redesign {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero-text-redesign {
+  max-width: 800px;
+  text-align: left;
+}
+
+.hero-title-redesign {
+  font-family: 'Poppins', sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.hero-highlight {
+  background: linear-gradient(135deg, #1e53f9, #3afaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle-redesign {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+}
+
+.hero-buttons-redesign {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 18px 35px;
+  background: linear-gradient(135deg, #1e53f9, #3afaff);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(30, 83, 249, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary-hero:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(30, 83, 249, 0.4);
+}
+
+.btn-secondary-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 18px 35px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-secondary-hero:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #3afaff;
+  transform: translateY(-3px);
+}
+
+.hero-trust {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.trust-number {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3afaff;
+  line-height: 1;
+}
+
+.trust-label {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.25rem;
+}
+
+/* Mobile Responsive Hero */
+@media (max-width: 768px) {
+  .hero-redesign {
+    min-height: 60vh;
+    padding-top: 80px;
+  }
+  
+  .hero-text-redesign {
+    text-align: center;
+  }
+  
+  .hero-title-redesign {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle-redesign {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-buttons-redesign {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .btn-primary-hero,
+  .btn-secondary-hero {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+  
+  .hero-trust {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .trust-item {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* ==============================================
+   REDESIGNED SERVICES SECTION - CARD GRID
+   ============================================== */
+
+.services-redesign {
+  padding: 96px 0;
+  background: #000;
+  position: relative;
+}
+
+.section-header-redesign {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header-redesign h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.section-header-redesign p {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.services-grid-redesign {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.service-card-redesign {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 28px;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(13, 19, 28, 0.06);
+}
+
+.service-card-redesign:hover {
+  transform: translateY(-8px);
+  border-color: rgba(58, 250, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(13, 19, 28, 0.15);
+}
+
+.service-icon-redesign {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e53f9, #3afaff);
+  border-radius: 16px;
+  color: #fff;
+}
+
+.service-content-redesign h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.service-content-redesign p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+.service-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.service-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+}
+
+.service-benefits svg {
+  color: #3afaff;
+  flex-shrink: 0;
+}
+
+.service-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #3afaff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.service-cta:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.services-cta-section {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.services-cta-section h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.services-cta-section p {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-primary-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, #1e53f9, #3afaff);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(30, 83, 249, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary-large:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(30, 83, 249, 0.4);
+}
+
+/* Mobile Responsive Services */
+@media (max-width: 1199px) {
+  .services-grid-redesign {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .services-redesign {
+    padding: 48px 0;
+  }
+  
+  .section-header-redesign h2 {
+    font-size: 2.5rem;
+  }
+  
+  .services-grid-redesign {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .service-card-redesign {
+    padding: 24px;
+  }
+  
+  .services-cta-section {
+    padding: 2rem 1rem;
+  }
+  
+  .services-cta-section h3 {
+    font-size: 1.75rem;
+  }
+}
+
 /* Cookie Banner */
 .cookie-banner {
   position: fixed;
