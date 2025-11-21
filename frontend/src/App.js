@@ -719,6 +719,21 @@ const Services = () => {
             </motion.div>
           ))}
           </motion.div>
+          
+          {/* Mobile Swipe Indicators */}
+          <div className="mobile-swipe-indicators">
+            <div className="swipe-dots">
+              <div className="dot active"></div>
+              <div className="dot"></div>
+              <div className="dot"></div>
+            </div>
+            <div className="swipe-hint">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span>Swipe</span>
+            </div>
+          </div>
         </div>
         
         {/* CTA Section */}
