@@ -1904,7 +1904,8 @@ body {
   transition: all 0.4s ease;
   backdrop-filter: blur(20px);
   box-shadow: 0 10px 40px rgba(13, 19, 28, 0.1);
-  min-height: 400px;
+  min-height: 450px;
+  width: 100%;
 }
 
 .service-card-redesign:hover {
