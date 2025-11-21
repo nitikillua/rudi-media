@@ -2076,6 +2076,143 @@ body {
   }
 }
 
+/* ==============================================
+   BIG IMPACT SECTION - VIRAL HOUSE STYLE
+   ============================================== */
+
+.big-impact-section {
+  padding: 200px 0;
+  background: linear-gradient(135deg, rgba(30, 83, 249, 0.05) 0%, rgba(58, 250, 255, 0.05) 100%);
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.big-impact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(30, 83, 249, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.big-impact-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.big-impact-content h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 4rem;
+  letter-spacing: -0.03em;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.impact-highlight {
+  background: linear-gradient(135deg, #1e53f9, #3afaff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.impact-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+  margin: 6rem 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.impact-stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Poppins', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #3afaff;
+  line-height: 1;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.stat-label {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary-xl {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 25px 50px;
+  background: linear-gradient(135deg, #1e53f9, #3afaff);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.25rem;
+  border-radius: 60px;
+  border: none;
+  box-shadow: 0 15px 40px rgba(30, 83, 249, 0.4);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary-xl:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 60px rgba(30, 83, 249, 0.5);
+}
+
+/* Mobile Responsive Big Impact */
+@media (max-width: 768px) {
+  .big-impact-section {
+    padding: 120px 0;
+    min-height: 80vh;
+  }
+  
+  .big-impact-content h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+  .impact-stats {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .stat-number {
+    font-size: 3rem;
+  }
+  
+  .stat-label {
+    font-size: 1rem;
+  }
+  
+  .btn-primary-xl {
+    padding: 20px 40px;
+    font-size: 1.125rem;
+  }
+}
+
 /* Cookie Banner */
 .cookie-banner {
   position: fixed;
