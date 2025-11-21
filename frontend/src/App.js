@@ -662,9 +662,10 @@ const Services = () => {
 
     const handleScroll = () => {
       const scrollLeft = container.scrollLeft;
-      const cardWidth = 300 + 24; // card width + gap
-      const currentCard = Math.round(scrollLeft / cardWidth);
-      setActiveCard(currentCard);
+      const cardWidth = 324; // 300px card width + 24px gap
+      const padding = 16; // padding from container
+      const currentCard = Math.round((scrollLeft - padding) / cardWidth);
+      setActiveCard(Math.max(0, Math.min(currentCard, services.length - 1)));
     };
 
     container.addEventListener('scroll', handleScroll);
@@ -675,9 +676,10 @@ const Services = () => {
     const container = containerRef.current;
     if (!container) return;
     
-    const cardWidth = 300 + 24; // card width + gap
+    const cardWidth = 324; // 300px card width + 24px gap
+    const padding = 16;
     container.scrollTo({
-      left: index * cardWidth,
+      left: (index * cardWidth) + padding,
       behavior: 'smooth'
     });
   };
