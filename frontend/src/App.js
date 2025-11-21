@@ -634,9 +634,11 @@ const Services = () => {
       description: "ROI-optimierte Werbekampagnen, die messbare Ergebnisse liefern.",
       icon: (
         <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L3 7L12 12L21 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M3 17L12 22L21 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M3 12L12 17L21 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M12 2L13.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="currentColor"/>
+          <circle cx="8" cy="8" r="2" stroke="currentColor" strokeWidth="2" fill="none"/>
+          <path d="M16 6C16.5523 6 17 6.44772 17 7V9C17 9.55228 16.5523 10 16 10H14C13.4477 10 13 9.55228 13 9V7C13 6.44772 13.4477 6 14 6H16Z" fill="currentColor"/>
+          <text x="8" y="12" fontSize="3" fill="currentColor">G</text>
+          <text x="16" y="12" fontSize="3" fill="currentColor">M</text>
         </svg>
       ),
       benefits: ["Google Ads Management", "Facebook & Instagram Ads", "Conversion Tracking", "Landing Page Optimierung"]
