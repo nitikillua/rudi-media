@@ -660,36 +660,40 @@ const Services = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Reset scroll position to start
-    container.scrollLeft = 0;
+    // Small delay to ensure container is rendered
+    setTimeout(() => {
+      container.scrollLeft = 0;
+    }, 100);
 
     const handleScroll = () => {
       const scrollLeft = container.scrollLeft;
       const cardWidth = 324; // 300px card width + 24px gap
-      const viewportWidth = container.offsetWidth;
-      const centerOffset = (viewportWidth - 300) / 2;
       
-      // Calculate which card is most centered in the viewport
-      const currentCard = Math.round((scrollLeft + centerOffset) / cardWidth);
-      setActiveCard(Math.max(0, Math.min(currentCard, services.length - 1)));
+      // Simple calculation: which card are we closest to?
+      let currentCard = Math.round(scrollLeft / cardWidth);
+      
+      // Clamp between 0 and number of services - 1
+      currentCard = Math.max(0, Math.min(currentCard, services.length - 1));
+      
+      setActiveCard(currentCard);
     };
 
     container.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call
+    
+    // Initial call after a short delay
+    setTimeout(handleScroll, 150);
     
     return () => container.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [services.length]);
 
   const scrollToCard = (index) => {
     const container = containerRef.current;
     if (!container) return;
     
     const cardWidth = 324; // 300px card width + 24px gap
-    const viewportWidth = container.offsetWidth;
-    const centerOffset = (viewportWidth - 300) / 2;
     
     container.scrollTo({
-      left: (index * cardWidth) - centerOffset + 16,
+      left: index * cardWidth,
       behavior: 'smooth'
     });
   };
