@@ -2195,17 +2195,8 @@ body {
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    position: fixed;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(15px);
+    margin-top: 2rem;
     padding: 14px 28px;
-    border-radius: 30px;
-    border: 1px solid rgba(58, 250, 255, 0.2);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
   }
   
   .swipe-dots {
