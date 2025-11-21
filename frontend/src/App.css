@@ -1822,8 +1822,8 @@ body {
 /* Mobile Responsive Hero */
 @media (max-width: 768px) {
   .hero-redesign {
-    min-height: 60vh;
-    padding-top: 80px;
+    min-height: 100vh;
+    padding: 100px 0 60px;
   }
   
   .hero-text-redesign {
@@ -1831,13 +1831,14 @@ body {
   }
   
   .hero-title-redesign {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
   }
   
   .hero-subtitle-redesign {
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
   }
   
   .hero-buttons-redesign {
