@@ -640,61 +640,78 @@ const WhyChooseUs = () => {
 const Services = () => {
   const services = [
     {
-      title: "Social Media Marketing",
-      description: "Professionelle Betreuung Ihrer Social Media Kanäle mit maßgeschneiderten Inhalten, die Ihre Zielgruppe begeistern und zu Kunden machen.",
-      features: [
-        "Content-Erstellung & Design",
-        "vor Ort: Video & Fotaufnahmen",
-        "virale Reels",
-        "Analytics & Reporting"
-      ],
-      image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwxfHxzb2NpYWwlMjBtZWRpYSUyMG1hcmtldGluZ3xlbnwwfHx8fDE3NTcyODczMTV8MA&ixlib=rb-4.1.0&q=85",
-      icon: "📱"
+      title: "Social Media Management",
+      description: "Professionelle Betreuung Ihrer Social Media Kanäle mit viral-optimiertem Content, der verkauft.",
+      icon: (
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C18.1046 10 19 10.8954 19 12V18C19 19.1046 18.1046 20 17 20H7C5.89543 20 5 19.1046 5 18V12C5 10.8954 5.89543 10 7 10Z" stroke="currentColor" strokeWidth="2"/>
+          <path d="M12 14V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      ),
+      benefits: ["Content-Erstellung & Design", "Virale Reels & Stories", "Analytics & ROI-Tracking"]
+    },
+    {
+      title: "Content Produktion",  
+      description: "Video-Content & Reels, die Aufmerksamkeit generieren und zu Conversions führen.",
+      icon: (
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14.7519 11.1679L11.5547 9.03647C10.8901 8.59343 10 9.06982 10 9.86852V14.1315C10 14.9302 10.8901 15.4066 11.5547 14.9635L14.7519 12.8321C15.3457 12.4362 15.3457 11.5638 14.7519 11.1679Z" stroke="currentColor" strokeWidth="2"/>
+          <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2"/>
+        </svg>
+      ),
+      benefits: ["Professionelle Videos", "Vor-Ort Aufnahmen", "Post-Production & Editing"]
+    },
+    {
+      title: "Webdesign & SEO",
+      description: "Moderne Websites, die nicht nur gut aussehen, sondern auch bei Google gefunden werden.",
+      icon: (
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L13.09 8.26L18 7L14.74 12L18 17L13.09 15.74L12 22L10.91 15.74L6 17L9.26 12L6 7L10.91 8.26L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+        </svg>
+      ),
+      benefits: ["Responsive Design", "SEO-Optimierung", "Performance & Speed"]
     },
     {
       title: "Google & Meta Ads",
-      description: "Maximieren Sie Ihren ROI mit professionell verwalteten Werbekampagnen auf Google, Facebook und Instagram.",
-      features: [
-        "Google Ads Management",
-        "Facebook & Instagram Ads",
-        "Keyword-Recherche & Optimierung",
-        "Landing Page Optimierung",
-        "Conversion Tracking"
-      ],
-      image: "https://images.unsplash.com/photo-1654277041042-8927699fcfd2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxnb29nbGUlMjBhZHN8ZW58MHx8fHwxNzU3Mjg3MzIxfDA&ixlib=rb-4.1.0&q=85",
-      icon: "🎯"
+      description: "ROI-optimierte Werbekampagnen, die messbare Ergebnisse liefern.",
+      icon: (
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+        </svg>
+      ),
+      benefits: ["Google Ads Management", "Facebook & Instagram Ads", "Conversion Tracking"]
     },
     {
-      title: "SEO & Webdesign",
-      description: "Moderne, suchmaschinenoptimierte Websites, die nicht nur gut aussehen, sondern auch bei Google gefunden werden.",
-      features: [
-        "Responsive Webdesign",
-        "Suchmaschinenoptimierung",
-        "Performance Optimierung",
-        "Content Management",
-        "Local SEO"
-      ],
-      image: "https://images.pexels.com/photos/270637/pexels-photo-270637.jpeg",
-      icon: "🌐"
+      title: "Paid Social Media",
+      description: "Strategische Social Media Werbung für maximale Reichweite und Conversions.",
+      icon: (
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 2L22 7L17 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M1 12V10C1 8.93913 1.42143 7.92172 2.17157 7.17157C2.92172 6.42143 3.93913 6 5 6H22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M7 22L2 17L7 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M23 12V14C23 15.0609 22.5786 16.0783 21.8284 16.8284C21.0783 17.5786 20.0609 18 19 18H2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
+      benefits: ["Zielgruppen-Targeting", "A/B-Testing", "Performance Analytics"]
     }
   ];
 
   return (
-    <section id="services" className="services">
+    <section id="services" className="services-redesign">
       <div className="container">
         <motion.div 
-          className="section-header"
+          className="section-header-redesign"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
           <h2>Unsere Leistungen</h2>
-          <p>Ganzheitliche Digital Marketing Lösungen für Ihren Erfolg</p>
+          <p>Social-First Marketing Lösungen, die verkaufen</p>
         </motion.div>
         
         <motion.div 
-          className="services-grid"
+          className="services-grid-redesign"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -703,32 +720,53 @@ const Services = () => {
           {services.map((service, index) => (
             <motion.div 
               key={index} 
-              className="service-card" 
+              className="service-card-redesign" 
               variants={fadeInUp}
             >
-              <div className="service-image">
-                <img src={service.image} alt={service.title} />
-                <div className="service-overlay">
-                  <span className="service-icon">{service.icon}</span>
-                </div>
+              <div className="service-icon-redesign">
+                {service.icon}
               </div>
               
-              <div className="service-content">
+              <div className="service-content-redesign">
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
                 
-                <ul className="service-features">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx}>{feature}</li>
+                <ul className="service-benefits">
+                  {service.benefits.map((benefit, idx) => (
+                    <li key={idx}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      {benefit}
+                    </li>
                   ))}
                 </ul>
                 
-                <a href="#contact" className="service-btn">
+                <a href="#contact" className="service-cta">
                   Mehr erfahren
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M7 7H17V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                 </a>
               </div>
             </motion.div>
           ))}
+        </motion.div>
+        
+        {/* CTA Section */}
+        <motion.div 
+          className="services-cta-section"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
+          <h3>Bereit für mehr Erfolg?</h3>
+          <p>Lassen Sie uns gemeinsam Ihre Digital Marketing Strategie entwickeln.</p>
+          <a href="#contact" className="btn-primary-large">
+            Jetzt Strategiegespräch buchen
+          </a>
         </motion.div>
       </div>
     </section>
