@@ -780,6 +780,48 @@ const Services = () => {
   );
 };
 
+// New Big Impact Section - Viral House Style
+const BigImpactSection = () => {
+  return (
+    <section className="big-impact-section">
+      <div className="container">
+        <motion.div 
+          className="big-impact-content"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+        >
+          <h2>
+            Mit kreativer Strategie & 
+            <span className="impact-highlight"> datengetriebenem Marketing </span>
+            verwandeln wir Reichweite in echte Kunden.
+          </h2>
+          
+          <div className="impact-stats">
+            <div className="impact-stat">
+              <div className="stat-number">320%</div>
+              <div className="stat-label">Mehr Reichweite</div>
+            </div>
+            <div className="impact-stat">
+              <div className="stat-number">150+</div>
+              <div className="stat-label">Zufriedene Kunden</div>
+            </div>
+            <div className="impact-stat">
+              <div className="stat-number">5M+</div>
+              <div className="stat-label">Views generiert</div>
+            </div>
+          </div>
+          
+          <a href="#contact" className="btn-primary-xl">
+            Kostenlose Beratung sichern
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
