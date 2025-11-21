@@ -2450,20 +2450,27 @@ body {
 
 .footer-brand-viral {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 1.5rem;
 }
 
 .footer-logo-viral {
-  height: 50px;
+  height: 60px;
   width: auto;
+  flex-shrink: 0;
 }
 
-.footer-brand-viral h3 {
+.footer-brand-text h3 {
   font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: #fff;
+  margin: 0 0 0.5rem 0;
+}
+
+.footer-brand-text p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
   margin: 0;
 }
 
