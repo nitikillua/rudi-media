@@ -1660,6 +1660,17 @@ body {
   padding: 120px 0 80px;
 }
 
+.hero-redesign::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(30, 83, 249, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+
 .hero-bg-redesign {
   position: absolute;
   top: 0;
