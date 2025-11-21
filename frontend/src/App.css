@@ -1869,29 +1869,34 @@ body {
    ============================================== */
 
 .services-redesign {
-  padding: 96px 0;
+  padding: 150px 0 120px;
   background: #000;
   position: relative;
+  min-height: 100vh;
 }
 
 .section-header-redesign {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
 }
 
 .section-header-redesign h2 {
   font-family: 'Poppins', sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
   color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .section-header-redesign p {
-  font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 600px;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 700px;
   margin: 0 auto;
+  line-height: 1.4;
 }
 
 .services-grid-redesign {
