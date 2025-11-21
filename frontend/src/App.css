@@ -722,7 +722,7 @@ body {
 .service-card {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 25px;
-  overflow: visible;
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   position: relative;
