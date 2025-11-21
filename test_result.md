@@ -118,7 +118,7 @@
         -comment: "Backend exists locally but needs Vercel deployment for public access"
         -working: true
         -agent: "testing"
-        -comment: "Backend successfully deployed and accessible at https://rudimedia-web-1.preview.emergentagent.com/api. All endpoints responding correctly with proper CORS configuration."
+        -comment: "Backend successfully deployed and accessible at https://agency-content-hub.preview.emergentagent.com/api. All endpoints responding correctly with proper CORS configuration."
 
   - task: "Create admin authentication system"
     implemented: true
