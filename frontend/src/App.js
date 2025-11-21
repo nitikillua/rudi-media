@@ -558,62 +558,58 @@ const Hero = () => {
 };
 
 const WhyChooseUs = () => {
-  const features = [
-    {
-      icon: "🎯",
-      title: "Zielgerichtete Strategien",
-      description: "Maßgeschneiderte Marketing-Lösungen, die auf Ihre spezifischen Unternehmensziele ausgerichtet sind."
-    },
-    {
-      icon: "📈",
-      title: "Messbare Erfolge",
-      description: "Transparente Reporting-Systeme zeigen Ihnen genau, wie sich Ihr Investment in Marketing auszahlt."
-    },
-    {
-      icon: "🤝",
-      title: "Marketing aus einer Hand",
-      description: "SEO-Agentur, Social-Media-Agentur etc. in Einem. Ein Ansprechpartner für alle Ihre Marketing-Bedürfnisse."
-    },
-    {
-      icon: "👥",
-      title: "Persönliche Betreuung",
-      description: "Direkter Kontakt zu Ihrem Marketing-Experten – keine Warteschleifen, keine Anonymität."
-    }
-  ];
-
   return (
-    <section id="about" className="why-choose-us">
+    <section className="why-choose-us-viral">
       <div className="container">
         <motion.div 
-          className="section-header"
+          className="why-content-viral"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeInUp}
         >
-          <h2>Warum Rudi-Media?</h2>
-          <p>Ihr Partner für nachhaltigen digitalen Erfolg</p>
+          <h2>
+            Wir lassen 
+            <span className="viral-highlight"> Marken wachsen</span>
+            & verwandeln Reichweite in echte Kunden.
+          </h2>
+          
+          <div className="why-benefits-viral">
+            <div className="benefit-viral">
+              <div className="benefit-number">01</div>
+              <div className="benefit-content">
+                <h3>Messbare Erfolge</h3>
+                <p>Transparente Ergebnisse, die Ihren ROI maximieren</p>
+              </div>
+            </div>
+            
+            <div className="benefit-viral">
+              <div className="benefit-number">02</div>
+              <div className="benefit-content">
+                <h3>Marketing aus einer Hand</h3>
+                <p>Ein Ansprechpartner für alle Marketing-Bedürfnisse</p>
+              </div>
+            </div>
+            
+            <div className="benefit-viral">
+              <div className="benefit-number">03</div>
+              <div className="benefit-content">
+                <h3>Persönliche Betreuung</h3>
+                <p>Direkter Kontakt ohne Warteschleifen</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="why-cta-viral">
+            <a href="#contact" className="btn-primary-xl">
+              Jetzt durchstarten
+            </a>
+          </div>
         </motion.div>
-        
-        <motion.div 
-          className="features-grid"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={stagger}
-        >
-          {features.map((feature, index) => (
-            <motion.div 
-              key={index} 
-              className="feature-card" 
-              variants={fadeInUp}
-            >
-              <div className="feature-icon">{feature.icon}</div>
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+      </div>
+    </section>
+  );
+};
         
         <div className="team-section">
           <motion.div 
